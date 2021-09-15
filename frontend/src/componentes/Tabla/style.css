@@ -1,0 +1,11 @@
+table, label{
+    font-size: small;
+   
+}
+.col-5 >.card{
+    height: 96%;
+}  
+div>.card-header{
+    background-color: #2d414c;
+    color: white;
+}

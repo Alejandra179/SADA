@@ -1,0 +1,9 @@
+.card-header{
+    
+    color:white;
+    font: bold 90% sans-serif;
+  }
+  .card-body, p,.card-text,.icono{
+    background-color:white;
+   
+  }
