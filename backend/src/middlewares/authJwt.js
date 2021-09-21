@@ -2,11 +2,11 @@ const jwt = require("jsonwebtoken");
 const config = require("../config");
 const User = require("../models/User");
 
-
 const middlewares = {
   verifyToken: async (req, res, next) => {
     try {
       const token = await req.headers.authentication;
+      console.log(token)
       if (!token) {
         return res.status(403).json({ message: "No existe ningun token" });
       } else {

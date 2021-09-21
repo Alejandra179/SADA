@@ -149,13 +149,11 @@ const ResultadosEnLista = ({ from, to }) => {
         setRegistrosTotales(lista);
         
     },[lista]) */
-  const onCheckboxClicked = (idx, isChecked, checkbox) => {
+  const onCheckboxClicked = (idx, isChecked) => {
     
     if (isChecked) {
-      let agregar=arrayDatos[idx]
-      setArrayDatasets(agregar)
-      console.log(arrayDatasets)
-     
+      let agregar = arrayDatos[idx]
+      setArrayDatasets(agregar)     
     }
     
 

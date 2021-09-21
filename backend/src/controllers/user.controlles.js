@@ -1,6 +1,7 @@
 const userCtrl = {};
 const config = require('../config')
 const User = require("../models/User");
+const jwt = require('jsonwebtoken')
 
 userCtrl.signIn = async (req,res)=>{
     const { username, password } = req.body;

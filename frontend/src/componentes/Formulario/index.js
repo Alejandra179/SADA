@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import Alert from "../Alert";
 import { useLocation } from "wouter";
 import useUser from "../../hooks/useUser";
+import loginService from '../../services/login'
 import "./style.css";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [user,setUser] = useState(null)
   const [, navigate] = useLocation();
   const { login, isLogged } = useUser();
   const [estado, setEstado] = useState({
@@ -14,8 +16,9 @@ export default function Login() {
   });
 
   useEffect(() => {
-    isLogged ? navigate("/importar-archivos") : navigate("/pagina-principal");
+    (isLogged) ? navigate("/importar-archivos") : navigate("/login");
   }, [isLogged, navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (username === "" || password === "") {
@@ -24,9 +27,10 @@ export default function Login() {
         mensajeError: "Todos los campos son obligatorios",
       });
     } else {
-      let res = await login({ username, password });
-      res
-        ? setEstado({
+      let res = await loginService({ username, password });
+      console.log(res);
+      (res)
+         ? setEstado({
             error: true,
             mensajeError: res,
           })
@@ -54,7 +58,7 @@ export default function Login() {
                 placeholder="Nombre de usuario"
                 value={username}
                 className="form-control"
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={({target}) => setUsername(target.value)}
               />
             </div>
             <div className="mb-3">
@@ -63,7 +67,7 @@ export default function Login() {
                 value={password}
                 placeholder="Contraseña"
                 className="form-control"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={({target}) => setPassword(target.value)}
               />
             </div>
             <div className="d-flex justify-content-end">

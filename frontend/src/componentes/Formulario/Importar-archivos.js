@@ -1,8 +1,10 @@
-import React, { useState, createRef, useContext } from "react";
+import React, { useState, createRef, useContext,useEffect } from "react";
+import { useLocation } from "wouter";
 import UserContext from "../../hooks/useContext";
 import serviceInsert from "../../services/insertarRegistros";
 const ImportarArchivos = () => {
   const { jwt } = useContext(UserContext);
+  const [,navigate] = useLocation()
   const [temperaturas, setTemperaturas] = useState("");
   const [humedades, setHumedades] = useState("");
   const [fechas, setFechas] = useState("");
@@ -11,6 +13,7 @@ const ImportarArchivos = () => {
     velocidad: "",
     direccion: "",
   });
+  
   const [precipitaciones, setPrecipitaciones] = useState("");
   const fileInput = createRef();
 
@@ -59,7 +62,7 @@ const ImportarArchivos = () => {
         limite = cadena.length - 1,
         arregloDeSubCadenas = cadena.split(separador, limite);
       let j = 0;
-
+      console.log(arregloDeSubCadenas)
       while (j < arregloDeSubCadenas.length) {
         let fecha = arregloDeSubCadenas[j];
         fechas.push(fecha);
@@ -69,17 +72,15 @@ const ImportarArchivos = () => {
         temperaturas.push(parseFloat(temperatura));
         let humedad = arregloDeSubCadenas[j + 3];
         humedades.push(parseFloat(humedad));
-        let velocidad = arregloDeSubCadenas[j+4];
-        console.log(velocidad);
+        let direccion = arregloDeSubCadenas[j+4];
+        datosViento.direccion.push(parseInt(direccion))
+        let velocidad = arregloDeSubCadenas[j+5];
         datosViento.velocidad.push(parseFloat(velocidad))
-        let direccion = arregloDeSubCadenas[j+5];
-        console.log(direccion)
-        datosViento.direccion.push(direccion)
         let precipitacion = arregloDeSubCadenas[j+6]
-        console.log(precipitacion)
         precipitaciones.push(precipitacion)
-        j = j + 7;
+        j = j + 8;
       }
+     
       setTemperaturas(temperaturas);
       setHumedades(humedades);
       setFechas(fechas);
@@ -88,6 +89,7 @@ const ImportarArchivos = () => {
         velocidad:datosViento.velocidad,
         direccion:datosViento.direccion
       })
+      setPrecipitaciones(precipitaciones)
     };
     lector.readAsText(archivo);
   };

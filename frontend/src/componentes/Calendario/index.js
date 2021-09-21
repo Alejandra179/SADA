@@ -21,12 +21,12 @@ const WEEKDAYS_LONG = [
   "Domingo",
   "Lunes",
   "Martes",
-  "Miercoles",
+  "Miércoles",
   "Jueves",
   "Viernes",
-  "Sabado",
+  "Sábado",
 ];
-const WEEKDAYS_SHORT = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
+const WEEKDAYS_SHORT = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
 export default class Calendario extends React.Component {
   static defaultProps = {
     numberOfMonths: 1,
@@ -97,9 +97,7 @@ export default class Calendario extends React.Component {
           
         <ResultadosEnLista from={from} to={to} />
         
-
         </div>
-
       </div>
     );
   }

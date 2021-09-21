@@ -3,12 +3,12 @@ const UsuarioContext = React.createContext({});
 
 export function UsuarioProvider({children}){
 
-    const [jwt,setJwt]=  useState(
+    const [jwt,]=  useState(
         () => window.sessionStorage.getItem('jwt')
       )
     
 
-    return <UsuarioContext.Provider value={{jwt, setJwt}}>
+    return <UsuarioContext.Provider value={jwt}>
         {children}
     </UsuarioContext.Provider>
 }

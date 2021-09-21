@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../../public/img/logo.png'
+import logo from '../../public/img/logo.png';
+import {Link} from 'wouter'
 import './style.css';
 
 const BarraDeNavegacion = () => {
@@ -34,7 +35,9 @@ const BarraDeNavegacion = () => {
                             <a className="nav-link" href="/pagina-principal/details">Detalles</a>
                         </li>
                         <li>
-                            <a className="nav-link" href="/">Agregar Datos</a>
+                            <a className="nav-link">
+                                <Link to="/importar-archivos">Agregar Datos
+                                </Link></a>
                         </li>
                     </ul>
 

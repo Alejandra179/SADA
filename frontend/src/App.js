@@ -12,12 +12,12 @@ function App() {
   return (
     <div className="App">
       <BarraDeNavegacion/>
-      <UsuarioProvider>
       <Route  component={Login} path="/login"/>
+     
       <Route 
       component={ImportarArchivos} path="/importar-archivos"
       />
-      </UsuarioProvider>
+    
       <Route 
       component={PaginaPrincipal} path="/pagina-principal"
     

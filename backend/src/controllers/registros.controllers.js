@@ -21,7 +21,7 @@ registrosCtrl.getRegistrosFecha = async (req, res) => {
 registrosCtrl.newRegistro = async (req, res) => {
   const { temperaturas, humedades, fechas, horas, precipitaciones, viento } =
     req.body;
-
+  console.log(temperaturas, humedades, fechas, horas, precipitaciones, viento)
   i = 0;
   while (i < temperaturas.length) {
     let newFecha = stringToDate(fechas[i]);

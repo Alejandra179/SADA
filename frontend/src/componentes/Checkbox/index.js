@@ -3,9 +3,6 @@ import React, { useState,useEffect } from "react";
 const Checkbox = ({id, onChange, value }) => {
   const [checked, setChecked] = useState();
 
-  const onClick = (checked) => {
-    onChange(id, checked,value);
-  };
   useEffect(() => {
     setChecked(checked);
   }, onChange);
@@ -17,7 +14,7 @@ const Checkbox = ({id, onChange, value }) => {
         <input
         name="opcion"
           type="radio"
-          onClick={(e) => onClick(e.target.checked)}
+          onClick={({target}) =>  onChange(id, target.checked,value)}
           checked={checked}
           value={value}
         />

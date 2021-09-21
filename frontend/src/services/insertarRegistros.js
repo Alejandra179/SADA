@@ -1,18 +1,20 @@
 const ENDPOINT = "http://localhost:4000";
 
 export default function insertarRegistros({
+  jwt,
   temperaturas,
   humedades,
   fechas,
   horas,
   precipitaciones,
-  viento,
+  viento
   
 }) {
-  console.log(temperaturas, humedades, fechas, horas,precipitaciones);
-  return fetch(`${ENDPOINT}/new_registro`, {
+  console.log(jwt,temperaturas, humedades, fechas, horas,precipitaciones,viento);
+  return fetch(`${ENDPOINT}/importar-registros`, {
     method: "POST",
     headers: {
+      "authentication":jwt,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ temperaturas, humedades, fechas, horas,viento,precipitaciones }),
