@@ -1,40 +1,37 @@
-import { useCallback,useContext,useState } from "react";
+import { useCallback,useContext} from "react";
 import UsuarioContext from './useContext';
 import loginService from '../services/login'
+
 export default function useUser(){
-    const {jwt} = useContext(UsuarioContext);
-    const [$jwt,setJwt]= useState(jwt)
-    const login = useCallback(async({username, password})=>{
+    const {jwt,setJwt} = useContext(UsuarioContext);
+    console.log({jwt})
+
+    const login = useCallback(async ({username, password})=>{
         let loginRes = await loginService({username, password})
-        
-        try {
-            if(!loginRes.message){
-                window.sessionStorage.setItem('jwt', loginRes)
-                setJwt(loginRes)
+        .then( jwt =>{
+            if(!jwt.message){
+                window.sessionStorage.setItem('jwt', jwt)
+                setJwt(jwt)
+               
             }else{
-                const res = loginRes.message
+                const res = jwt.message
                 return res
             }
             
-          
-        } catch (err) {
+        })
+        .catch(err=>{
             window.sessionStorage.removeItem('jwt')
             console.log(err)
-            
-        }
-        
-          
+        })
+        return loginRes
     },[setJwt])
     
-    const logout = useCallback(()=>{
-        window.sessionStorage.removeItem('jwt')
-        setJwt(null)
-    },[setJwt])
+   
     return (
         {
-        isLogged: Boolean($jwt),
+        isLogged: Boolean(jwt),
         login,
-        logout
+        
         }
     )
 }

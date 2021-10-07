@@ -2,6 +2,7 @@ import React from "react";
 import DayPicker, { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import ResultadosEnLista from "../Tabla";
+import getRegistros from "../../services/getRegistros";
 import "./style.css";
 const MONTHS = [
   "Enero",
@@ -36,27 +37,51 @@ export default class Calendario extends React.Component {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
-    this.state = this.getInitialState();
+    this.state = { 
+      from: undefined, 
+      to: undefined,
+   };
   }
 
   getInitialState() {
     return {
-      from: undefined,
-      to: undefined,
+      from: undefined, to: undefined
     };
   }
+  /* componentDidMount(){
+   const obtenerDatos = async()=>{
+        const { from, to } = this.state;
+        let registros = await getRegistros({from,to})
+        this.setState({registrosList : registros})
+    }
+    obtenerDatos()
 
+ } */
   handleDayClick(day) {
     const range = DateUtils.addDayToRange(day, this.state);
     this.setState(range);
+   
   }
 
   handleResetClick() {
     this.setState(this.getInitialState());
   }
+ componentDidUpdate(prevProps,prevState){
+   console.log(prevProps);
+   console.log(prevState);
+   console.log("el estado de props ha cambiado")
+ }
+ /* getRegistros(range).then((res)=>
+ this.setState({
+   registrosList:res
+ })
+ 
+
+ ) */
 
   render() {
-    const { from, to } = this.state;
+    const { from, to} = this.state;
+  
     const modifiers = { start: from, end: to };
     return (
       <div className="row">
@@ -94,9 +119,7 @@ export default class Calendario extends React.Component {
           </div>
         </div>
         <div className="col-9">
-          
-        <ResultadosEnLista from={from} to={to} />
-        
+          <ResultadosEnLista  />
         </div>
       </div>
     );

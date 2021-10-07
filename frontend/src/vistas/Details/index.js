@@ -11,7 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import mapa from "../../public/img/mapa.PNG";
 import "./style.css";
-import Calendario from "../../componentes/Calendario";
+import Calendario from "../../componentes/Calendario/Calendario";
 
 const Details = () => {
   const graficoRef = useRef();

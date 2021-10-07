@@ -2,22 +2,18 @@ import React, { useState, useEffect } from "react";
 import Alert from "../Alert";
 import { useLocation } from "wouter";
 import useUser from "../../hooks/useUser";
-import loginService from '../../services/login'
 import "./style.css";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [user,setUser] = useState(null)
   const [, navigate] = useLocation();
-  const { login, isLogged } = useUser();
+  const { login,isLogged} = useUser();
   const [estado, setEstado] = useState({
     error: false,
     mensajeError: "",
   });
 
-  useEffect(() => {
-    (isLogged) ? navigate("/importar-archivos") : navigate("/login");
-  }, [isLogged, navigate]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,10 +23,9 @@ export default function Login() {
         mensajeError: "Todos los campos son obligatorios",
       });
     } else {
-      let res = await loginService({ username, password });
-      console.log(res);
-      (res)
-         ? setEstado({
+      let res = await login({ username, password });
+      (res)? 
+        setEstado({
             error: true,
             mensajeError: res,
           })
@@ -40,6 +35,13 @@ export default function Login() {
           });
     }
   };
+
+  useEffect(()=>{
+    (isLogged)?
+      (navigate('/importar-archivos')):
+      navigate('/login')
+      
+}, [isLogged,navigate])
   return (
     <div
       className="card text-dark mb-3 mt-5 ml-3 mx-auto"
