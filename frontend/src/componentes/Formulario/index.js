@@ -3,6 +3,7 @@ import Alert from "../Alert";
 import { useLocation } from "wouter";
 import useUser from "../../hooks/useUser";
 import "./style.css";
+import BarraDeNavegacion from "../BarraDeNavegacion";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -43,7 +44,9 @@ export default function Login() {
       
 }, [isLogged,navigate])
   return (
-    <div
+    <div>
+      <BarraDeNavegacion/>
+      <div
       className="card text-dark mb-3 mt-5 ml-3 mx-auto"
       style={{ maxWidth: "25rem" }}
     >
@@ -81,5 +84,9 @@ export default function Login() {
         </form>
       </div>
     </div>
+
+    </div>
+
+    
   );
 }

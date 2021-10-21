@@ -3,7 +3,6 @@ import { Route } from "wouter";
 import Details from "./vistas/Details";
 import PaginaPrincipal from "./vistas/PaginaPrincipal";
 import "./App.css";
-import BarraDeNavegacion from "./componentes/BarraDeNavegacion";
 import Login from "./componentes/Formulario/index";
 import ImportarArchivos from "./componentes/Formulario/Importar-archivos";
 import { UsuarioProvider } from "./hooks/useContext";
@@ -11,7 +10,7 @@ import { UsuarioProvider } from "./hooks/useContext";
 function App() {
   return (
     <div className="App">
-      <BarraDeNavegacion />
+     
       <UsuarioProvider>
         <Route component={Login} path="/login" />
 

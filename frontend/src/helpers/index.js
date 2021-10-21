@@ -39,7 +39,6 @@ function generarArray(objeto) {
       contador += 1;
     }
   });
-  console.log(arrayFinal);
   return arrayFinal;
 }
 

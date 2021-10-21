@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import DayPicker, { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import ResultadosEnLista from "../Tabla";
@@ -48,7 +48,7 @@ export default class Calendario extends React.Component {
       from: undefined, to: undefined
     };
   }
-  /* componentDidMount(){
+  componentDidMount(){
    const obtenerDatos = async()=>{
         const { from, to } = this.state;
         let registros = await getRegistros({from,to})
@@ -56,7 +56,7 @@ export default class Calendario extends React.Component {
     }
     obtenerDatos()
 
- } */
+ }
   handleDayClick(day) {
     const range = DateUtils.addDayToRange(day, this.state);
     this.setState(range);
@@ -71,13 +71,13 @@ export default class Calendario extends React.Component {
    console.log(prevState);
    console.log("el estado de props ha cambiado")
  }
- /* getRegistros(range).then((res)=>
+ getRegistros(range).then((res)=>
  this.setState({
    registrosList:res
  })
  
 
- ) */
+ ) 
 
   render() {
     const { from, to} = this.state;
@@ -125,3 +125,4 @@ export default class Calendario extends React.Component {
     );
   }
 }
+ */

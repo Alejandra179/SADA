@@ -17,3 +17,7 @@
   .RangeExample .Selectable{
     font-size: small;
   }
+  .col-3.col-9{
+    height: 100%;
+  }
+  

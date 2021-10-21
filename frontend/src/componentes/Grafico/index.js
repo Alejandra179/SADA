@@ -1,6 +1,9 @@
 import React from 'react'
-import { Line } from '@reactchartjs/react-chart.js'
 import './style.css'
+import { Line } from '@reactchartjs/react-chart.js'
+
+
+
 const options = {
   scales: {
     yAxes: [
@@ -13,8 +16,13 @@ const options = {
   },
 }
 
+
 const LineChart = ({data}) => (
-        <Line data={data} options={options} />
+  
+    
+
+    <Line data={data} options={options} />
+   
 )
 
 export default LineChart

@@ -2,10 +2,18 @@ table, label{
     font-size: small;
    
 }
-.col-5 >.card{
+/* .col-5 >.card{
     height: 96%;
-}  
+}  */ 
 div>.card-header{
     background-color: #2d414c;
     color: white;
+}
+.card{
+    height:100%;
+    background-color:white;
+
+}
+.card-body>.table{
+    width: 80%;
 }
