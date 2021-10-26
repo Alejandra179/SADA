@@ -15,6 +15,7 @@ const hora = () => {
 };
 
 const stringToDate = (fecha) => {
+  console.log(fecha)
   let arregloFecha = fecha.split("/");
   return new Date(`${arregloFecha[2]}-${arregloFecha[1]}-${arregloFecha[0]}`);
 };

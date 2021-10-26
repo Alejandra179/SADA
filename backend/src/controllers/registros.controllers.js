@@ -3,22 +3,23 @@ const Registro = require("../models/Registros");
 const { stringToDate } = require("../utils/functions");
 
 registrosCtrl.getEndRegistros = async (req, res) => {
-  // ordena los registros por fecha desc. 
-  let fe = '2021-08-19'
-  //let registros = await Registro.find({fecha:{$regex:`${stringToDate(2021/08/19)}`}})
-  let registros = await Registro.find().sort({fecha:-1,hora:1}).limit(50);
-  //realizar consulta por fecha y luego ordenar por hora
-  console.log(registros);
+  let fechaFind = new Date("2021,09,15");
+  let registros = await Registro.find({
+    fecha: { $gte: fechaFind },
+  })
+    .sort({ hora: 1 })
+    .limit(50);
   return res.json(registros);
 };
 
 registrosCtrl.getRegistrosFecha = async (req, res) => {
   let fechaStart = new Date(req.params.fechaInicio);
+
   let fechaEnd = new Date(req.params.fechaFin);
   let registros = await Registro.find({
     fecha: { $gte: fechaStart, $lte: fechaEnd },
   });
-  
+
   return await res.json(registros);
 };
 

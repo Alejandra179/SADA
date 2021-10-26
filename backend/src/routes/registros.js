@@ -4,7 +4,7 @@ const { getEndRegistros, newRegistro, getRegistrosFecha} = require('../controlle
 const {signIn}= require('../controllers/user.controlles')
 const  {verifyToken} = require('../middlewares/authJwt')
 
-router.route('/').get(getEndRegistros); 
+router.route('/endRegistros/:fecha').get(getEndRegistros); 
 router.route('/importar-registros').post(verifyToken,newRegistro);
 router.route('/:fechaInicio&:fechaFin').get(getRegistrosFecha);
 router.route('/login').post(signIn);

@@ -1,6 +1,8 @@
 const convertirFecha = (fecha) =>
   `${fecha.getFullYear()},${fecha.getMonth() + 1},${fecha.getDate()}`;
 
+  const convertirFechaToGet = (fecha) =>
+  `${fecha.getFullYear()},${fecha.getMonth() + 1},${fecha.getDate()-1}`;  
 const convertFormatDMY = (fecha) =>
   `${fecha.substring(8, 10)}/${fecha.substring(6, 7)}/${fecha.substring(0, 4)}`;
 
@@ -42,4 +44,4 @@ function generarArray(objeto) {
   return arrayFinal;
 }
 
-export { convertirFecha, convertFormatDMY, generarArray };
+export { convertirFecha, convertFormatDMY, generarArray,convertirFechaToGet };

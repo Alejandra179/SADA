@@ -41,7 +41,7 @@ const ImportarArchivos = () => {
       const humedades = [];
       const datosViento = { velocidad: [], direccion: [] };
       const precipitaciones = [];
-
+//metodo trim() para eliminar saltos de linea,espacios
       let i;
       var result = "";
       var c;

@@ -17,9 +17,9 @@ function App() {
         <Route component={ImportarArchivos} path="/importar-archivos" />
       </UsuarioProvider>
 
-      <Route component={PaginaPrincipal} path="/pagina-principal" />
+      <Route component={PaginaPrincipal} path="/" />
 
-      <Route component={Details} path="/pagina-principal/details" />
+      <Route component={Details} path="/details" />
     </div>
   );
 }

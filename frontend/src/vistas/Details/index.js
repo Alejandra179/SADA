@@ -45,99 +45,101 @@ const Details = () => {
   const printGrafico = useReactToPrint({
     content: () => graficoRef.current,
   });
+  const parametrosMeterologicos = ()=>{
+    return(  <div className="col-4">
+    <div className="card-section border rounded">
+      <div className="card-header rounded">Condiciones de la hora 10:00</div>
+      <div className="card-body">
+        <div
+          className="d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
+          <dl className="card-text">
+            <FontAwesomeIcon
+              icon={faTemperatureLow}
+              className="icono"
+            />
+            Temperatura:
+          </dl>
+          <dl className="card-text">40°</dl>
+        </div>
+        <div>''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''</div>
+        <div className="card-text">
+          <FontAwesomeIcon icon={faTint} className="icono" />
+          <strong>Precipitación</strong>
+        </div>
+        <div
+          className="container d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className="card-text">Última Hora:</div>
+          <div className="card-text">0mm</div>
+        </div>
+        <div
+          className="container d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className="card-text">Últimas 24 hs:</div>
+          <div className="card-text">0mm</div>
+        </div>
 
+        <div
+          className="container d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className="card-text">Últimos 30 días:</div>
+          <div className="card-text">0mm</div>
+        </div>
+
+        <div
+          className="container d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className="card-text">Total del año a la fecha:</div>
+          <div className="card-text">0mm</div>
+        </div>
+        <div>''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''</div>
+
+        <div
+          className="d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className="card-text">
+            <FontAwesomeIcon icon={faTachometerAlt} className="icono" />
+            Humedad:
+          </div>
+          <div className="card-text">50%</div>
+        </div>
+        <div>'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''</div>
+        <div className="card-text">
+          <FontAwesomeIcon icon={faWind} className="icono" />
+          <strong>Viento</strong>
+        </div>
+        <div
+          className="container d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className="card-text">Dirección:</div>
+          <div className="card-text">Norte</div>
+        </div>
+        <div
+          className="container d-flex"
+          style={{ justifyContent: "space-between" }}
+        >
+          <div className="card-text">Intensidad:</div>
+          <div className="card-text">17.7 km/h</div>
+        </div>
+      </div>
+    </div>
+  </div>)
+  }
 
   return (
     <div className="detail">
       <BarraDeNavegacion/>
       <div className="container" id="body">
         <div className="row">
-          <div className="col-4">
-            <div className="card-section border rounded">
-              <div className="card-header rounded">Condiciones de la hora 10:00</div>
-              <div className="card-body">
-                <div
-                  className="d-flex"
-                  style={{ justifyContent: "space-between" }}
-                >
-                  <dl className="card-text">
-                    <FontAwesomeIcon
-                      icon={faTemperatureLow}
-                      className="icono"
-                    />
-                    Temperatura:
-                  </dl>
-                  <dl className="card-text">40°</dl>
-                </div>
-                <div>''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''</div>
-                <div className="card-text">
-                  <FontAwesomeIcon icon={faTint} className="icono" />
-                  <strong>Precipitación</strong>
-                </div>
-                <div
-                  className="container d-flex"
-                  style={{ justifyContent: "space-between" }}
-                >
-                  <div className="card-text">Última Hora:</div>
-                  <div className="card-text">0mm</div>
-                </div>
-                <div
-                  className="container d-flex"
-                  style={{ justifyContent: "space-between" }}
-                >
-                  <div className="card-text">Últimas 24 hs:</div>
-                  <div className="card-text">0mm</div>
-                </div>
-
-                <div
-                  className="container d-flex"
-                  style={{ justifyContent: "space-between" }}
-                >
-                  <div className="card-text">Últimos 30 días:</div>
-                  <div className="card-text">0mm</div>
-                </div>
-
-                <div
-                  className="container d-flex"
-                  style={{ justifyContent: "space-between" }}
-                >
-                  <div className="card-text">Total del año a la fecha:</div>
-                  <div className="card-text">0mm</div>
-                </div>
-                <div>''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''</div>
-
-                <div
-                  className="d-flex"
-                  style={{ justifyContent: "space-between" }}
-                >
-                  <div className="card-text">
-                    <FontAwesomeIcon icon={faTachometerAlt} className="icono" />
-                    Humedad:
-                  </div>
-                  <div className="card-text">50%</div>
-                </div>
-                <div>'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''</div>
-                <div className="card-text">
-                  <FontAwesomeIcon icon={faWind} className="icono" />
-                  <strong>Viento</strong>
-                </div>
-                <div
-                  className="container d-flex"
-                  style={{ justifyContent: "space-between" }}
-                >
-                  <div className="card-text">Dirección:</div>
-                  <div className="card-text">Norte</div>
-                </div>
-                <div
-                  className="container d-flex"
-                  style={{ justifyContent: "space-between" }}
-                >
-                  <div className="card-text">Intensidad:</div>
-                  <div className="card-text">17.7 km/h</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        {(datos.length!==0)?parametrosMeterologicos():''}
           <div className="col-4">
             <div className="card-section">
               <div className="card-header">Ubicación</div>
