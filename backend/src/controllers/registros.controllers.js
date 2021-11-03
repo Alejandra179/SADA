@@ -1,20 +1,61 @@
 const registrosCtrl = {};
+const Registros = require("../models/Registros");
 const Registro = require("../models/Registros");
-const { stringToDate } = require("../utils/functions");
+const { stringToDate, rangoDeFechas } = require("../utils/functions");
 
 registrosCtrl.getEndRegistros = async (req, res) => {
-  let fechaFind = new Date("2021,09,15");
-  let registros = await Registro.find({
-    fecha: { $gte: fechaFind },
+  let { rangoMes, rangoAnio, rangoDia, hora } = rangoDeFechas();
+  let fechaFind = new Date(req.params.fecha);
+  let resUltimosRegistros = await Registro.find({
+    fecha: { $gte: rangoDia,$lte:fechaFind },
   })
-    .sort({ hora: 1 })
-    .limit(50);
-  return res.json(registros);
+    .sort({fecha:-1, hora: 1 })
+
+  //se extrae el registro que se encuentra en la posicion .length-1 para usarlo
+  // como de la ultima hora 
+  let precipitacionDiaria = 0;
+  resUltimosRegistros.length !== 0
+    ? resUltimosRegistros((element) => {
+        precipitacionDiaria += Number(element.precipitacion);
+      })
+    : "";
+
+  let resPrecipitacionMensual = await Registros.aggregate([
+    {
+      $match: {
+        fecha: { $gte: new Date(rangoMes), $lte: new Date(fechaFind) },
+      },
+    },
+    { $group: { _id: "$fecha", maximoDiario: { $max: "$precipitacion" } } },
+  ]);
+  let precipitacionMen = 0;
+  resPrecipitacionMensual.forEach((element) => {
+    precipitacionMen += Number(element.maximoDiario);
+  });
+
+  let resPrecipitacionAnual = await Registros.aggregate([
+    {
+      $match: {
+        fecha: { $gte: new Date(rangoAnio), $lte: new Date(fechaFind) },
+      },
+    },
+    { $group: { _id: "$fecha", maximoDiario: { $max: "$precipitacion" } } },
+  ]);
+  let precipitacionAnual = 0;
+  resPrecipitacionAnual.forEach((element) => {
+    precipitacionAnual += Number(element.maximoDiario);
+  });
+  
+  return res.json({
+    resUltimosRegistros,
+    precipitacionDiaria,
+    precipitacionMen,
+    precipitacionAnual,
+  });
 };
 
 registrosCtrl.getRegistrosFecha = async (req, res) => {
   let fechaStart = new Date(req.params.fechaInicio);
-
   let fechaEnd = new Date(req.params.fechaFin);
   let registros = await Registro.find({
     fecha: { $gte: fechaStart, $lte: fechaEnd },

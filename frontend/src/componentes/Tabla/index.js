@@ -5,9 +5,9 @@ import LineChart from "../../componentes/Grafico";
 import "./style.css";
 const ResultadosEnLista = ({ registrosList }) => {
   const [registrosTotales, setRegistrosTotales] = useState([]);
-  //registros totales va a contener los datos para ser mostrados mediante 
+  //registros totales va a contener los datos para ser mostrados mediante
   //el tratamiento de registrosList.
-  //arrayDatos almacena los datos necesarios para iterar sobre los difentes tipos de datos 
+  //arrayDatos almacena los datos necesarios para iterar sobre los difentes tipos de datos
   //a mostrar en el grafico
   let arrayDatos = [
     {
@@ -53,7 +53,7 @@ const ResultadosEnLista = ({ registrosList }) => {
   const [itemsPerPage, setItemsPerPage] = useState(1);
   //arrayDatasets va a contener los datos a mostrar en el grafico
   const [arrayDatasets, setArrayDatasets] = useState([]);
-  //una vez que se reciben los de registrosList se llama a la funcion generarArray 
+  //una vez que se reciben los de registrosList se llama a la funcion generarArray
   //y se setea el valor de registrosTotales
   useEffect(() => {
     setRegistrosTotales(generarArray(registrosList));
@@ -92,7 +92,8 @@ const ResultadosEnLista = ({ registrosList }) => {
                   onChange={changeValue}
                 />
                 Humedad
-              </label><br/>
+              </label>
+              <br />
               <label>
                 <input
                   name="datos"
@@ -101,7 +102,8 @@ const ResultadosEnLista = ({ registrosList }) => {
                   onChange={changeValue}
                 />
                 Precipitaciones
-              </label><br/>
+              </label>
+              <br />
               <label>
                 <input
                   name="datos"
@@ -110,7 +112,8 @@ const ResultadosEnLista = ({ registrosList }) => {
                   onChange={changeValue}
                 />
                 Temperatura
-              </label><br/>
+              </label>
+              <br />
               <label>
                 <input
                   name="datos"
@@ -119,7 +122,8 @@ const ResultadosEnLista = ({ registrosList }) => {
                   onChange={changeValue}
                 />
                 Velocidad del Viento
-              </label><br/>
+              </label>
+              <br />
             </form>
           </div>
           <LineChart data={dataList} />

@@ -15,7 +15,7 @@ const hora = () => {
 };
 
 const stringToDate = (fecha) => {
-  console.log(fecha)
+  console.log(fecha);
   let arregloFecha = fecha.split("/");
   return new Date(`${arregloFecha[2]}-${arregloFecha[1]}-${arregloFecha[0]}`);
 };
@@ -27,4 +27,23 @@ function ensureToken(req, res, next) {
 //captura la hora cada 5
 setInterval(hora, 30000);
 
-module.exports = { fecha, hora, ensureToken, stringToDate };
+const rangoDeFechas = () => {
+  let fecha = new Date(2021,09,15);
+  let anio = fecha.getFullYear();
+  let mes = fecha.getMonth() + 1;
+  let dia = fecha.getDate();
+  let rangoAnio = `${anio - 1},${mes},${dia}`;
+  let rangoDia = `${anio},${mes},${dia - 1}`;
+  mes === 1 ? (mes = 12) && (anio -= 1) : (mes -= 1);
+  let rangoMes = `${anio},${mes},${dia}`;
+  let hora = `${fecha.getHours()}:${fecha.getMinutes()}`;
+  return { rangoMes, rangoAnio, rangoDia, hora };
+};
+
+module.exports = {
+  fecha,
+  hora,
+  ensureToken,
+  stringToDate,
+  rangoDeFechas,
+};
