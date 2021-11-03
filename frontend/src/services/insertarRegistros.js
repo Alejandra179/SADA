@@ -7,17 +7,22 @@ export default function insertarRegistros({
   fechas,
   horas,
   precipitaciones,
-  viento
-  
+  viento,
 }) {
-  console.log(jwt,temperaturas, humedades, fechas, horas,precipitaciones,viento);
   return fetch(`${ENDPOINT}/importar-registros`, {
     method: "POST",
     headers: {
-      "authentication":jwt,
+      authentication: jwt,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ temperaturas, humedades, fechas, horas,viento,precipitaciones }),
+    body: JSON.stringify({
+      temperaturas,
+      humedades,
+      fechas,
+      horas,
+      viento,
+      precipitaciones,
+    }),
   })
     .then((res) => {
       /* if(!res.ok) throw new Error('Response is not ok') */

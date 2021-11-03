@@ -18,14 +18,30 @@ import BarraDeNavegacion from "../../componentes/BarraDeNavegacion";
 const Details = () => {
   const [datos, setDatos] = useState([]);
   const [data, setData] = useState();
+  const [precipitacion, setPrecipitacion] = useState({
+    diaria: "",
+    mensual: "",
+    anual: "",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getEndRegistros();
-      setDatos(response);
+      const {
+        resUltimosRegistros,
+        precipitacionDiaria,
+        precipitacionMen,
+        precipitacionAnual,
+      } = await getEndRegistros();
+      setDatos(resUltimosRegistros);
+      setPrecipitacion({
+        diaria: precipitacionDiaria,
+        mensual: precipitacionMen,
+        anual: precipitacionAnual,
+      });
     };
     fetchData();
   }, []);
+
   useEffect(() => {
     setData({
       labels: datos.map((i) => i.hora), //horas
@@ -44,12 +60,13 @@ const Details = () => {
   const printGrafico = useReactToPrint({
     content: () => graficoRef.current,
   });
-  const parametrosMeterologicos = (datos) => {
+
+  const parametrosMeterologicos = (precipitacion, datos) => {
     return (
       <div className="col-4">
         <div className="card-section border rounded">
           <div className="card-header rounded">
-            Condiciones de la hora 10:00
+            Ultimas Condiciones Capturadas
           </div>
           <div className="card-body">
             <div className="d-flex" style={{ justifyContent: "space-between" }}>
@@ -57,7 +74,10 @@ const Details = () => {
                 <FontAwesomeIcon icon={faTemperatureLow} className="icono" />
                 Temperatura:
               </dl>
-              <dl className="card-text">{datos[datos.length-1].temperatura}°</dl>
+              <dl className="card-text">
+                {datos.length !== 0 ? datos[datos.length - 1].temperatura : "-"}
+                °
+              </dl>
             </div>
             <div>
               ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -71,14 +91,14 @@ const Details = () => {
               style={{ justifyContent: "space-between" }}
             >
               <div className="card-text">Última Hora:</div>
-              <div className="card-text">{datos[datos.length-1].precipitacion}mm</div>
+              <div className="card-text">{precipitacion.diaria}mm</div>
             </div>
             <div
               className="container d-flex"
               style={{ justifyContent: "space-between" }}
             >
               <div className="card-text">Últimas 24 hs:</div>
-              <div className="card-text">0mm</div>
+              <div className="card-text">{precipitacion.diaria}mm</div>
             </div>
 
             <div
@@ -86,7 +106,7 @@ const Details = () => {
               style={{ justifyContent: "space-between" }}
             >
               <div className="card-text">Últimos 30 días:</div>
-              <div className="card-text">0mm</div>
+              <div className="card-text">{precipitacion.mensual} mm</div>
             </div>
 
             <div
@@ -94,7 +114,7 @@ const Details = () => {
               style={{ justifyContent: "space-between" }}
             >
               <div className="card-text">Total del año a la fecha:</div>
-              <div className="card-text">0mm</div>
+              <div className="card-text">{precipitacion.anual} mm</div>
             </div>
             <div>
               ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -105,7 +125,9 @@ const Details = () => {
                 <FontAwesomeIcon icon={faTachometerAlt} className="icono" />
                 Humedad:
               </div>
-              <div className="card-text">{datos[datos.length-1].humedad}%</div>
+              <div className="card-text">
+                {datos.length !== 0 ? datos[datos.length - 1].humedad : "-"}°%
+              </div>
             </div>
             <div>
               '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -119,14 +141,24 @@ const Details = () => {
               style={{ justifyContent: "space-between" }}
             >
               <div className="card-text">Dirección:</div>
-              <div className="card-text">{datos[datos.length-1].viento.direccion}</div>
+              <div className="card-text">
+                {datos.length !== 0
+                  ? datos[datos.length - 1].viento.direccion
+                  : "-"}
+                °
+              </div>
             </div>
             <div
               className="container d-flex"
               style={{ justifyContent: "space-between" }}
             >
               <div className="card-text">Intensidad:</div>
-              <div className="card-text">{datos[datos.length-1].viento.velocidad}km/h</div>
+              <div className="card-text">
+                {datos.length !== 0
+                  ? datos[datos.length - 1].viento.intensidad
+                  : "-"}
+                °km/h
+              </div>
             </div>
           </div>
         </div>
@@ -198,7 +230,9 @@ const Details = () => {
       <BarraDeNavegacion />
       <div className="container" id="body">
         <div className="row">
-          {datos.length !== 0 ? parametrosMeterologicos(datos) : ""}
+          {precipitacion.anual !== "" && datos !== ""
+            ? parametrosMeterologicos(precipitacion, datos)
+            : ""}
           {datosDeUbicacion()}
           {grafico1()}
         </div>

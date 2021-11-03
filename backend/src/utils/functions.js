@@ -28,7 +28,7 @@ function ensureToken(req, res, next) {
 setInterval(hora, 30000);
 
 const rangoDeFechas = () => {
-  let fecha = new Date(2021,09,15);
+  let fecha = new Date();
   let anio = fecha.getFullYear();
   let mes = fecha.getMonth() + 1;
   let dia = fecha.getDate();

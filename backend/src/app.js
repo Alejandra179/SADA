@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 //settings
-app.set('port',process.env.PORT || 4000);
+app.set('port',process.env.PORT || 8080);
 //middlewares
 app.use(cors());
 // Configurar cabeceras y cors

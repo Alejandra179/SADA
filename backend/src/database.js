@@ -9,3 +9,7 @@ const connection = mongoose.connection;
 connection.once('open', ()=> {
     console.log('DB conectada')
 })
+
+if(process.env.NODE_ENV === 'production'){
+    
+}
