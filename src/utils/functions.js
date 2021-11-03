@@ -15,14 +15,13 @@ const hora = () => {
 };
 
 const stringToDate = (fecha) => {
-  console.log(fecha);
   let arregloFecha = fecha.split("/");
   return new Date(`${arregloFecha[2]}-${arregloFecha[1]}-${arregloFecha[0]}`);
 };
 
 function ensureToken(req, res, next) {
   const bearerHeader = req.headers["authorization"];
-  console.log(bearerHeader);
+ 
 }
 //captura la hora cada 5
 setInterval(hora, 30000);

@@ -7,19 +7,18 @@ registrosCtrl.getEndRegistros = async (req, res) => {
   let { rangoMes, rangoAnio, rangoDia, hora } = rangoDeFechas();
   let fechaFind = new Date(req.params.fecha);
   let resUltimosRegistros = await Registro.find({
-    fecha: { $gte: rangoDia,$lte:fechaFind },
-  })
-    .sort({fecha:-1, hora: 1 })
+    fecha: { $gte: rangoDia, $lte: fechaFind },
+  }).sort({ fecha: -1, hora: 1 });
 
   //se extrae el registro que se encuentra en la posicion .length-1 para usarlo
-  // como de la ultima hora 
+  // como de la ultima hora
   let precipitacionDiaria = 0;
   resUltimosRegistros.length !== 0
     ? resUltimosRegistros((element) => {
         precipitacionDiaria += Number(element.precipitacion);
       })
     : "";
-
+    
   let resPrecipitacionMensual = await Registros.aggregate([
     {
       $match: {
@@ -45,13 +44,19 @@ registrosCtrl.getEndRegistros = async (req, res) => {
   resPrecipitacionAnual.forEach((element) => {
     precipitacionAnual += Number(element.maximoDiario);
   });
-  
-  return res.json({
-    resUltimosRegistros,
-    precipitacionDiaria,
-    precipitacionMen,
-    precipitacionAnual,
-  });
+  res !== ""
+    ? res.json({
+        resUltimosRegistros,
+        precipitacionDiaria,
+        precipitacionMen,
+        precipitacionAnual,
+      })
+    : res.json({
+        resUltimosRegistros: [],
+        precipitacionDiaria: "0",
+        precipitacionMen: "0",
+        precipitacionAnual: "0",
+      });
 };
 
 registrosCtrl.getRegistrosFecha = async (req, res) => {
