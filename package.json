@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    
-    "start": "node src/index.js"
+    "build":"cd frontend && npm run build",
+    "install-client": "cd frontend && npm install",
+    "heroku-postbuild":"npm run install-client && npm run build",
+    "start": "node index.js",
+    "client":"cd frontend && npm start"
   },
   "keywords": [],
   "author": "",
