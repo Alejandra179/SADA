@@ -2,8 +2,9 @@ require('./database');
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const path = require('path')
 //settings
-app.set('port',process.env.PORT || 4000);
+const port =process.env.PORT || 4000;
 //middlewares
 app.use(cors());
 // Configurar cabeceras y cors
@@ -17,15 +18,12 @@ app.use((req, res, next) => {
 app.use(express.json());
 if(process.env.NODE_ENV==='production'){
     app.use(express.static('frontend/build'))
+    app.get('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'frontend','buil','index.html'))
+    })
 }
 //routes
 app.use('/', require('./routes/registros'))
 
 
-const main = async() =>{
-    await app.listen(app.get('port'))
-    console.log('servidor corriendo en el puerto',app.get('port'));
-    
-}
-
-main();
+app.listen(port,() => console.log(`servidor corriendo en el puerto ${port}`));
