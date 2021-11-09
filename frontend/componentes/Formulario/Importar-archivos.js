@@ -2,7 +2,7 @@ import React, { useState, createRef, useContext, useEffect } from "react";
 import { useLocation } from "wouter";
 import UserContext from "../../hooks/useContext";
 import useUser from '../../hooks/useUser' 
-import serviceInsert from "../../services/insertarRegistros";
+import {serviceInsert} from "../../services/RegistrosService";
 
 const ImportarArchivos = () => {
   const { jwt } = useContext(UserContext);

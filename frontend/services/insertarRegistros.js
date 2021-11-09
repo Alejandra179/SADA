@@ -1,4 +1,4 @@
-const ENDPOINT = "http://localhost:4000";
+
 
 export default function insertarRegistros({
   jwt,
@@ -9,7 +9,7 @@ export default function insertarRegistros({
   precipitaciones,
   viento,
 }) {
-  return fetch(`${ENDPOINT}/importar-registros`, {
+  return fetch(`/importar-registros`, {
     method: "POST",
     headers: {
       authentication: jwt,

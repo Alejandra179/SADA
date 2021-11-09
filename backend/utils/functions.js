@@ -1,3 +1,5 @@
+
+//TODO RECOMENDACION: SI vas a trabajar fechas podrias considerar usar momentjs (CONSIDERARLO)
 const fecha = () => {
   let date = new Date();
   let year = date.getFullYear();

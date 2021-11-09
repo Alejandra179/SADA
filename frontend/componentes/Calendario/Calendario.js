@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import DayPicker, { DateUtils } from "react-day-picker";
-import getRegistros from "../../services/getRegistros";
+import {getRegistros} from "../../services/RegistrosService";
 import ResultadosEnLista from "../Tabla";
 import "react-day-picker/lib/style.css";
 import "./style.css";

@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const {MONGODB_URI} = process.env
 
+// TODO RECOMENDACIONES: cambiar esto de promesas a async/await
 mongoose
   .connect(
-    "mongodb+srv://aleMz:aleMz@cluster0.wnv0l.gcp.mongodb.net/test?authSource=admin&replicaSet=atlas-nn5vcj-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true",
+    MONGODB_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
