@@ -29,6 +29,11 @@ var corsOptionsDelegate = function (req, callback) {
 
 app.set('port',port)
 
+// route heroku host:
+// https://db-remaf.herokuapp.com/api/
+// route render host:
+// wait for migration
+
 // rutas
 
 app.use('/api',require('./rutas'))
