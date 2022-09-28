@@ -2,19 +2,19 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import api from '../services/api'
-const url = "https://db-remaf.herokuapp.com/api/"
+
 export default function Card() {
   const [datos,setDatos] = useState([])
- 
+
+  const getData = async () => {
+    await api(1)
+    .then((dt) => {
+      setDatos(dt)
+    })
+  }
   
-  useEffect(() => {
-    fetch(`${url}1`)
-      .then((response) => {
-        return response.json()
-      })
-      .then((dt) => {
-        setDatos(dt)
-      })
+  useEffect( () => {
+    getData()
   }, [])
   
  
