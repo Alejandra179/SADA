@@ -1,0 +1,30 @@
+{
+  "name": "api_remaf",
+  "version": "1.0.0",
+  "description": "Api Rest del proyecto remaf, para instalar en Heroku",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebasParedes96/Api_REMAF.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SebasParedes96/Api_REMAF/issues"
+  },
+  "homepage": "https://github.com/SebasParedes96/Api_REMAF#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
+  }
+}
