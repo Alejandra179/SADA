@@ -3,17 +3,18 @@ const conexion = require("./config/conexion");
 
 ctrl.getValues = async (req, res) => {
   let sql = "select * from estaciones";
-  await conexion.query(sql, (err, rows, fields) => {
+  await conexion.query(sql, (err, rows) => {
     if (err) throw err;
     else {
       res.json(rows);
     }
   });
 };
+
 ctrl.getLastValues = async (req, res) => {
   const { id } = await req.params;
   let sql = `SELECT * FROM sensores,estaciones WHERE rela_estaciones=id_estaciones and id_estaciones='${id}' ORDER by id_sensores DESC LIMIT 1 `;
-  await conexion.query(sql, (err, rows, fields) => {
+  await conexion.query(sql, (err, rows) => {
     if (err) throw err;
     else {
       res.json(rows);
@@ -24,7 +25,7 @@ ctrl.getLastValues = async (req, res) => {
 ctrl.getWithDate = async (req, res) => {
   const { id, date } = await req.params;
   let sql = `SELECT * FROM sensores,estaciones WHERE rela_estaciones=id_estaciones and id_estaciones='${id}' and date_estaciones like '%${date}%' ORDER by id_sensores DESC`;
-  await conexion.query(sql, (err, rows, fields) => {
+  await conexion.query(sql, (err, rows) => {
     if (err) throw err;
     else {
       res.json(rows);
@@ -34,7 +35,7 @@ ctrl.getWithDate = async (req, res) => {
 
 ctrl.addValue = async function (req, res) {
   const { temp, hume, prec, dir, vel, estacion } = await req.body;
-  if (temp == "" || !temp) {
+  if (temp == "" || !temp || estacion == "") {
     res.json({ status: "datos incompletos" });
   } else {
     let sql = `insert into sensores(temperatura_sensores,

@@ -9,9 +9,9 @@ const app = express();
 
 //admitir tipos de datos
 app.use(express.json());
-app.use(cors());
 
 // configurar cors
+app.use(cors());
 
 var allowlist = [];
 var corsOptionsDelegate = function (req, callback) {
