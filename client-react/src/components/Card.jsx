@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import api from '../services/api'
+import Table from 'react-bootstrap/Table';
+
 
 export default function Card() {
   const [datos,setDatos] = useState([])
@@ -19,8 +21,8 @@ export default function Card() {
   
  
  return (
-  <div>
-    <table border="1">
+  <div className='bg-light'>
+   <Table striped bordered hover >
       <thead>
         <tr>
           <th>Temperatura</th>
@@ -43,7 +45,7 @@ export default function Card() {
           );
         })}
       </tbody>
-    </table>
+    </Table>
   </div>
 );
 }
