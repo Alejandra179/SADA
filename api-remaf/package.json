@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/SebasParedes96/Api_REMAF#readme",
   "devDependencies": {
-    
+    "nodemon": "^2.0.19"
   },
   "dependencies": {
     "cors": "^2.8.5",
