@@ -2,10 +2,10 @@ import { createContext,useContext,useReducer } from "react";
 import {CREATE,UPDATE,DELETE} from './actions'
 import reducer from './reducer'
 
-const AppContext = createContext()
+export const AppContext = createContext()
 
 const initialState ={
-
+ id:1 , estacion:'prueba'
 }
 export const AppProvider = ({children}) => {
     
