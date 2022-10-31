@@ -4,13 +4,13 @@ import './App.css'
 
 import Home from './pages/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {AppProvider} from './context/appContext'
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
       
-    <div className="App">
-
+    <div className="container">
+       <AppProvider />
       <Home/>
     </div>
   )

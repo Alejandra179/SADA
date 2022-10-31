@@ -1,0 +1,3 @@
+export const CREATE= 'CREATE_ESTACION'
+export const UPDATE= 'UPDATE_ESTACION'
+export const DELETE= 'DELETE_ESTACION'
