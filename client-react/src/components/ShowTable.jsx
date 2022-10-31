@@ -1,37 +1,50 @@
-import React from 'react'
-import { AppContext,useAppContext } from '../context/appContext'
+import React,{useState} from 'react'
+import EditModal from '../components/EditModal'
+//import { AppContext,useAppContext } from '../context/appContext'
+
+const  apiGetEstaciones=async()=>{
+    await axios.get(`${url}/api/estaciones`)
+    .then(response=>{
+     setData(response.data);
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
 
 function ShowTable() {
-    const {estaciones} = useAppContext(AppContext)
-    console.log(estaciones)
+   // const {estaciones} = useAppContext(AppContext)
+   const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
-        <table className="table table-striped mt-5">
-    <thead className='bg-dark text-white'>
+        <table className="table table-striped mt-5 bordered">
+    <thead className='bg-success text-white'>
         <tr>
             <th>Estaciones</th>
             <th>Dirección</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-       {  
-         estaciones.map((estacion) => (
-            <tr  key={estacion.id}>
+           <tr>
+     
                 <td>Larry the Bird</td>
                 <td>asd</td>
                 <td><div className='btn-group'>
-                    <button className="btn-warning"><i className='fa-regular fa-pen-to-square text-white'></i></button>
-                    <button className="btn-danger"><i className='fa-regular fa-trash-can'></i></button>
+                    <button onClick={handleShow} className="btn-warning"><i className='fa-regular fa-pen-to-square text-white'></i></button>
+                    <button onClick={handleShow} className="btn-danger"><i className='fa-regular fa-trash-can'></i></button>
                     </div>
                 </td>
             </tr>
-        ))
-        
-       }
+    
        
     </tbody>
     </table>
+    <EditModal show={show} onClose={handleClose}/>
     </>
   )
 }
