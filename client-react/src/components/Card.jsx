@@ -9,7 +9,7 @@ export default function Card() {
   const [datos,setDatos] = useState([])
 
   const getData = async () => {
-    await api(1)
+    await api()
     .then((dt) => {
       setDatos(dt)
     })
@@ -18,8 +18,7 @@ export default function Card() {
   useEffect( () => {
     getData()
   }, [])
-  
- 
+
  return (
   <div className='bg-light'>
    <Table striped bordered hover >
@@ -35,12 +34,12 @@ export default function Card() {
       <tbody>
         {datos.map(dt => {
           return (
-            <tr key={dt.id_sensores}>
-              <td>{dt.temperatura_sensores}</td>
-              <td>{dt.humedad_sensores}</td>
-              <td>{dt.precipitacion_sensores}</td>
-              <td>{dt.direcc_viento_sensores}</td>
-              <td>{dt.veloc_viento_sensores}</td>
+            <tr key={dt.id}>
+              <td>{dt.temperatura}</td>
+              <td>{dt.humedad}</td>
+              <td>{dt.precipitacion}</td>
+              <td>{dt.direcc_viento}</td>
+              <td>{dt.veloc_viento}</td>
             </tr>
           );
         })}
