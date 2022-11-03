@@ -20,7 +20,8 @@ export default function Card() {
   }, [])
 
  return (
-  <div className='bg-light'>
+  <div className='bg-suceess'>
+    
    <Table striped bordered hover >
       <thead>
         <tr>

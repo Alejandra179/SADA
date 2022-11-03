@@ -35,9 +35,11 @@ function ShowTable() {
     return (
     <>
       <div className="d-grid gap-4 d-md-block">
-          <button className="btn btn-success lg-small" type="button">
-            <i className='fa-solid fa-circle-plus fa-2x'></i>
+      <div className='btn-group'>
+          <button className="btn btn-success"  type="button">
+          <i className="bi bi-plus-circle"></i> Agregar Estación 
           </button>
+        </div>
         </div>
         <table className="table table-striped mt-5 bordered">
     <thead className='bg-success text-white'>

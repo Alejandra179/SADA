@@ -9,8 +9,8 @@ function App() {
 
   return (
       
-    <div className="container">
-       <AppProvider />
+    <div >
+
       <Home/>
     </div>
   )
