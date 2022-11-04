@@ -25,10 +25,11 @@ export default function Home() {
 
       <nav id="navbar"  className="nav-menu navbar">
         <ul>
-          <li><a href="#services"  className="nav-link scrollto"><i className="bi bi-thermometer-sun"></i><span>Ultima medición</span></a></li>
-          <li><a href="#hero"  className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></a></li>
+          
+          <li><a href="#estaciones"  className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></a></li>
           <li><a href="#about"  className="nav-link scrollto"><i className="bi bi-broadcast-pin"></i><span>Sensores</span></a></li>
-          <li><a href="#resume"  className="nav-link scrollto"><i  className="bx bx-file-blank"></i> <span>Usuarios</span></a></li>
+          <li><a href="#mediciones"  className="nav-link scrollto"><i className="bi bi-thermometer-sun"></i><span>Ultima medición</span></a></li>
+          <li><a href="#resume"  className="nav-link scrollto"><i className ="bi bi-file-person"></i><span>Usuarios</span></a></li>
         </ul>
       </nav>
     </div>
@@ -36,14 +37,13 @@ export default function Home() {
 
  
 
-  <main id="main">
+  <main id="mediciones">
     <section id="about"  className="about">
       <div  className="container">
 
         <div  className="section-title">
-          <h2>About</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
+          <h2>Mediciones</h2>
+         </div>
 
         <div  className="row">
           <Card />
@@ -52,13 +52,12 @@ export default function Home() {
       </div>
     </section>
    
-    <section id="resume"  className="resume">
+    <section id="estaciones"  className="resume">
       <div  className="container">
 
         <div  className="section-title">
-          <h2>Resume</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
+          <h2>Estaciones</h2>
+           </div>
 
         <div  className="row">
           <div  className="col-lg-12" data-aos="fade-up">
