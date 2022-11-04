@@ -41,14 +41,18 @@ function ShowTable() {
           </button>
         </div>
         </div>
-        <table className="table table-striped mt-5 bordered">
+        <div className='table-responsive-md'>
+
+        
+        <table className="table table-responsive table-striped mt-5 bordered">
     <thead className='bg-success text-white'>
         <tr>
+            <th>Acciones</th>
             <th>Estaciones</th>
             <th>Dirección</th>
             <th>Latitud</th>
             <th>Longitud</th>
-            <th>Acciones</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -56,15 +60,17 @@ function ShowTable() {
       {datos.map(dt => {
           return (
             <tr key={dt.id_estaciones}>
-              <td>{dt.descri_estaciones}</td>
-              <td>{dt.direccion_estaciones}</td>
-              <td>{dt.latitude}</td>
-              <td>{dt.longitude}</td>
+
               <td><div className='btn-group'>
                   <button onClick={handleShow} className="btn-warning"><i className='fa-regular fa-pen-to-square text-white'></i></button>
                   <button onClick={handleShow} className="btn-danger"><i className='fa-regular fa-trash-can'></i></button>
                   </div>
               </td>
+              <td>{dt.descri_estaciones}</td>
+              <td>{dt.direccion_estaciones}</td>
+              <td>{dt.latitude}</td>
+              <td>{dt.longitude}</td>
+             
             </tr>
           );
         })}
@@ -73,6 +79,7 @@ function ShowTable() {
        
     </tbody>
     </table>
+    </div>
     <EditModal show={show} onClose={handleClose}/>
     </>
   )
