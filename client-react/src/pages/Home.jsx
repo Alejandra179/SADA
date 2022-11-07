@@ -37,7 +37,7 @@ export default function Home() {
 
  
 
-  <main id="mediciones">
+  <main id="main">
     <section id="about"  className="about">
       <div  className="container">
 
