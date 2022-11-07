@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../components/Card'
+import DocApi from '../components/DocAPI'
 import NavBar from '../components/Navbar'
 import ShowTable from '../components/ShowTable'
 import { AppProvider } from '../context/appContext'
@@ -47,6 +48,7 @@ export default function Home() {
 
         <div  className="row">
           <Card />
+          <DocApi />
         </div>
 
       </div>
