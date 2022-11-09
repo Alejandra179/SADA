@@ -3,38 +3,14 @@ import Card from '../components/Card'
 import DocApi from '../components/DocAPI'
 import NavBar from '../components/Navbar'
 import ShowTable from '../components/ShowTable'
-import { AppProvider } from '../context/appContext'
+import '../assets/js/main.js'
+import '../assets/css/style.css'
 
-
-
-export default function Home() {
+export const Home = () =>{
 
   return (
     <div >
-      
-
-  <i  className="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
-  <header id="header">
-    <div  className="d-flex flex-column">
-
-      <div  className="profile">
-        <img  src = './logo.png' className="figure-img img-fluid rounded" />
-        <h1  className="text-light"><a href="index.html">REMAF</a></h1>
-      
-      </div>
-
-      <nav id="navbar"  className="nav-menu navbar">
-        <ul>
-          
-          <li><a href="#estaciones"  className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></a></li>
-          <li><a href="#about"  className="nav-link scrollto"><i className="bi bi-broadcast-pin"></i><span>Sensores</span></a></li>
-          <li><a href="#mediciones"  className="nav-link scrollto"><i className="bi bi-thermometer-sun"></i><span>Ultima medición</span></a></li>
-          <li><a href="#resume"  className="nav-link scrollto"><i className ="bi bi-file-person"></i><span>Usuarios</span></a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+     <NavBar />
 
  
 

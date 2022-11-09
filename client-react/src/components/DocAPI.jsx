@@ -14,7 +14,8 @@ export default function App() {
 
  return (
    <div>
-     {copied ? <div className="alert alert-primary" role="alert"><i class="bi bi-clipboard-check"></i> ¡Copiado!</div> : <button className="btn btn-info btn-clipboard" onClick={copyText}><i class="bi bi-clipboard2"></i>Copiar</button>}
+      <p>I'm <span className="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></p>
+     {copied ? <div className="alert alert-primary" role="alert"><i className ="bi bi-clipboard-check"></i> ¡Copiado!</div> : <button className="btn btn-info btn-clipboard" onClick={copyText}><i className="bi bi-clipboard2"></i>Copiar</button>}
      
    </div>
  );
