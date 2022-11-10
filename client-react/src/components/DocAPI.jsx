@@ -2,32 +2,47 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import useCopy from "use-copy";
 import Alert from 'react-bootstrap/Alert';
+import { useState } from 'react';
 function DocApi() {
-  const [copied, copy, setCopied] = useCopy("Hola mundorr");
-
- const copyText = (text) => {
-  useCopy(text)
-  copy();
-
-   setTimeout(() => {
-     setCopied(false);
-   }, 3000);
- };
+  const [copied, setCopied ] = useState(false);
+   {console.log(copied)}
+ const copiarAlPortapapeles= (text) =>{
+     document.execCommand('copy',false,text)
+     setCopied(true)
+   
+ }
   return (
-    <Card>
-      <Card.Header as="h5">Datos Almacenados</Card.Header>
-      <Card.Body>
-        <Card.Title>Ejemplo </Card.Title>
-        <Card.Text>
-        <pre class="brush: js notranslate"><code><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://api-remaf.onrender.com/api/'</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-        </Card.Text>
-        {copied ? <Alert key='success' variant='success'><i className ="bi bi-clipboard-check"></i> ¡Copiado!</Alert> : <Button onClick={copyText("fetch('https://api-remaf.onrender.com/api/').then((response) => response.json()).then((data) => console.log(data));")} variant="success"><i className="bi bi-clipboard2"></i>Copiar</Button> }
-        
-      </Card.Body>
-    </Card>
+
+    <section id="estaciones"  className="resume">
+      <div  className="container">
+
+        <div  className="section-title">
+          <h2>Docs</h2>
+           </div>
+
+        <div  className="row">
+          <div  className="col-lg-12" data-aos="fade-up">
+          <Card>
+              <Card.Header className="h5">Datos Almacenados</Card.Header>
+              <Card.Body>
+                <Card.Title>Ejemplo </Card.Title>
+                <Card.Text>
+                <pre className="brush: js notranslate"><code><span className="token function">fetch</span><span className="token punctuation">(</span><span className="token string">'https://api-remaf.onrender.com/api/'</span><span className="token punctuation">)</span>
+          <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">response</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> response<span className="token punctuation">.</span><span className="token function">json</span><span className="token punctuation">(</span><span className="token punctuation">)</span><span className="token punctuation">)</span>
+          <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">data</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> console<span className="token punctuation">.</span><span className="token function">log</span><span className="token punctuation">(</span>data<span className="token punctuation">)</span><span className="token punctuation">)</span><span className="token punctuation">;</span>
+        </code></pre>
+                </Card.Text>
+                {copied ? <Alert key='success' variant='success'><i className ="bi bi-clipboard-check"></i> ¡Copiado!</Alert> : <Button onClick={copiarAlPortapapeles("fetch('https://api-remaf.onrender.com/api/').then((response) => response.json()).then((data) => console.log(data));")} variant="success"><i className="bi bi-clipboard2"></i>Copiar</Button> }
+                
+              </Card.Body>
+            </Card>
+          </div>
+       
+        </div>
+
+      </div>
+    </section>
+    
   );
 }
 

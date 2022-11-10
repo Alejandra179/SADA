@@ -37,7 +37,7 @@ export const MainRouter = () => {
 
                 <Route path='/' element={
                     <PrivateRoutes>
-                       <Docs />
+                       <Home />
                     </PrivateRoutes>
                 } />
 
