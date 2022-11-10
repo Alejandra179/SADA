@@ -23,12 +23,12 @@ function DocApi() {
         <div  className="row">
           <div  className="col-lg-12" data-aos="fade-up">
           <Card>
-              <Card.Header className="h5">Datos Almacenados</Card.Header>
+              <Card.Header className="h5">Consultar datos almacenados</Card.Header>
               <Card.Body>
                 <Card.Title>Ejemplo </Card.Title>
                 <Card.Text>
-                <pre className="brush: js notranslate"><code><span className="token function">fetch</span><span className="token punctuation">(</span><span className="token string">'https://api-remaf.onrender.com/api/'</span><span className="token punctuation">)</span>
-          <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">response</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> response<span className="token punctuation">.</span><span className="token function">json</span><span className="token punctuation">(</span><span className="token punctuation">)</span><span className="token punctuation">)</span>
+                <pre className="brush: js notranslate"><code><span className="token function">fetch</span><span className="token punctuation">(</span><span className="token string">'https://api-remaf.onrender.com/api/'</span><span className="token punctuation">)</span><br/>
+          <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">response</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> response<span className="token punctuation">.</span><span className="token function">json</span><span className="token punctuation">(</span><span className="token punctuation">)</span><span className="token punctuation">)</span><br/>
           <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">data</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> console<span className="token punctuation">.</span><span className="token function">log</span><span className="token punctuation">(</span>data<span className="token punctuation">)</span><span className="token punctuation">)</span><span className="token punctuation">;</span>
         </code></pre>
                 </Card.Text>
