@@ -6,6 +6,7 @@ import {
 import { LoginScreen, RegisterScreen } from '../pages/';
 import { NotFound404 } from '../pages/NotFound404';
 import { Home } from '../pages/Home';
+import { Docs } from '../pages/Docs';
 import { OtroEnrutador } from './OtroEnrutador';
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
@@ -22,9 +23,9 @@ export const MainRouter = () => {
                     </PublicRoutes>
                 } />
 
-                <Route path='/signup' element={
+                <Route path='/docs' element={
                     <PublicRoutes>
-                        <RegisterScreen/>
+                        <Docs/>
                     </PublicRoutes>
                 } />
                 
@@ -36,7 +37,7 @@ export const MainRouter = () => {
 
                 <Route path='/' element={
                     <PrivateRoutes>
-                       <Home />
+                       <Docs />
                     </PrivateRoutes>
                 } />
 

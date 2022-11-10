@@ -4,7 +4,7 @@ import {
  } from 'react-router-dom'
 
 import '../assets/css/style.css'
- const NavBar = () => {
+const NavBar = () => {
     return (
           
            <>
@@ -34,7 +34,7 @@ import '../assets/css/style.css'
            </>
 )
 }
-export default NavBar
+export default NavBar;
  
 
 

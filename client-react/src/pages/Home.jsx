@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from '../components/Card'
 import DocApi from '../components/DocAPI'
-import NavBar from '../components/Navbar'
+import NavBar from '../components/NavBar'
 import ShowTable from '../components/ShowTable'
 import '../assets/js/main.js'
 import '../assets/css/style.css'
