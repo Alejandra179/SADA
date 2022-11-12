@@ -12,7 +12,7 @@ const NavBar = () => {
            <i  className ="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
             <header id="header">
-            <div  className="d-flex flex-column">
+            <div  className="d-flex flex-column" data-aos="fade-up">
 
                 <div  className="profile">
                 <img  src = './logo.png' className="figure-img img-fluid rounded" />
