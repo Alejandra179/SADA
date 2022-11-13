@@ -15,8 +15,10 @@ const NavBar = () => {
             <div  className="d-flex flex-column" data-aos="fade-up">
 
                 <div  className="profile">
-                <img  src = './logo.png' className="figure-img img-fluid rounded" />
-                <h1  className="text-light"><NavLink href="index.html">REMAF</NavLink></h1>
+             {   //<img  src = './logo.png' className="figure-img img-fluid rounded" />
+             }
+               <br />
+                <h1  className="text-light"><NavLink to="/">REMAF</NavLink></h1>
                 
                 </div>
 
