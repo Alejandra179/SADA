@@ -31,13 +31,31 @@ const NavBar = () => {
                 <nav id="navbar"  className="nav-menu navbar">
                 <ul>
                     <li><NavLink to="/docs" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Docs</span></NavLink></li>
-                    <li><NavLink to="/" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></NavLink></li>
-                    <li>  {isAuthenticated ? <LogoutButton /> : <LoginButton />}</li>
-                
+                    <li><NavLink to="/estaciones" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></NavLink></li>
+                    
                 </ul>
                 </nav>
+                <br />
+                <div className='row'>
+                <div className="align-items-center justify-content-center">
+                 {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+                </div>  
+                </div>
+                
             </div>
             </header>
+           
+            <footer id="footer">
+              
+                <div  className="container">
+                <div  className="copyright">
+                    &copy; Copyright <strong><span>REMAF</span></strong>
+                </div>
+                <div  className="credits">
+                    Designed by Alejandro Bernal
+                </div>
+                </div>
+            </footer>
            </>
 )
 }

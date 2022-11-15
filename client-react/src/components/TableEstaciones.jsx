@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import EditModal from '../components/EditModal'
+import EditModal from './EditModal'
 import axios from 'axios'
 
 //import { AppContext,useAppContext } from '../context/appContext'
@@ -35,7 +35,16 @@ function ShowTable() {
 
     return (
     <>
-      <div className="d-grid gap-4 d-md-block">
+    <section id="estaciones"  className="resume">
+      <div  className="container">
+
+        <div  className="section-title">
+          <h2>Estaciones</h2>
+           </div>
+
+        <div  className="row">
+          <div  className="col-lg-12" data-aos="fade-up">
+          <div className="d-grid gap-4 d-md-block">
       <div className='btn-group'>
           <button className="btn btn-success"  type="button">
           <i className="bi bi-plus-circle"></i> Agregar Estación 
@@ -82,6 +91,13 @@ function ShowTable() {
     </table>
     </div>
     <EditModal show={show} onClose={handleClose}/>
+          </div>
+       
+        </div>
+
+      </div>
+    </section>
+    
     </>
   )
 }

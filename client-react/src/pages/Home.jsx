@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../components/Card'
 import DocApi from '../components/DocAPI'
 import NavBar from '../components/NavBar'
-import ShowTable from '../components/ShowTable'
+import ShowTable from '../components/TableEstaciones'
 import '../assets/js/main.js'
 import '../assets/css/style.css'
 
@@ -51,17 +51,8 @@ export const Home = () =>{
 
   </main>
 
-  <footer id="footer">
-    <div  className="container">
-      <div  className="copyright">
-        &copy; Copyright <strong><span>REMAF</span></strong>
-      </div>
-      <div  className="credits">
-        Designed by Alejandro Bernal
-      </div>
-    </div>
-  </footer>
-  <a href="#"  className="back-to-top d-flex align-items-center justify-content-center"><i  className="bi bi-arrow-up-short"></i></a>
+  
+  
     </div>
   )
 }
