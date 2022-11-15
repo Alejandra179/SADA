@@ -29,7 +29,7 @@ function DocApi() {
     }
   }
   return (
-
+    <>
     <section id="estaciones"  className="resume">
       <div  className="container">
 
@@ -44,10 +44,10 @@ function DocApi() {
                 <Card.Title>Ejemplo de imprementación</Card.Title>
                 <Form.Control id='textCopied' className='hideen' disabled hidden />
                 <Card.Text>
-                <pre className="brush: js notranslate"><code><span className="token function">fetch</span><span className="token punctuation">(</span><span className="token string">'https://api-remaf.onrender.com/api/'</span><span className="token punctuation">)</span><br/>
+                <span className="brush: js notranslate"><code><span className="token function">fetch</span><span className="token punctuation">(</span><span className="token string">'https://api-remaf.onrender.com/api/'</span><span className="token punctuation">)</span><br/>
           <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">response</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> response<span className="token punctuation">.</span><span className="token function">json</span><span className="token punctuation">(</span><span className="token punctuation">)</span><span className="token punctuation">)</span><br/>
           <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">data</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> console<span className="token punctuation">.</span><span className="token function">log</span><span className="token punctuation">(</span>data<span className="token punctuation">)</span><span className="token punctuation">)</span><span className="token punctuation">;</span>
-        </code></pre>
+        </code></span>
                 </Card.Text>
                 <CopyToClipboard text="fetch('https://api-remaf.onrender.com/api/')
                 .then((response) => response.json())
@@ -64,10 +64,10 @@ function DocApi() {
                 <Card.Title>Ejemplo de imprementación</Card.Title>
                 <Form.Control id='textCopied' className='hideen' disabled hidden />
                 <Card.Text>
-                <pre className="brush: js notranslate"><code><span className="token function">fetch</span><span className="token punctuation">(</span><span className="token string">'https://api-remaf.onrender.com/api/estaciones'</span><span className="token punctuation">)</span><br/>
+                <span className="brush: js notranslate"><code><span className="token function">fetch</span><span className="token punctuation">(</span><span className="token string">'https://api-remaf.onrender.com/api/estaciones'</span><span className="token punctuation">)</span><br/>
           <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">response</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> response<span className="token punctuation">.</span><span className="token function">json</span><span className="token punctuation">(</span><span className="token punctuation">)</span><span className="token punctuation">)</span><br/>
           <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">data</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> console<span className="token punctuation">.</span><span className="token function">log</span><span className="token punctuation">(</span>data<span className="token punctuation">)</span><span className="token punctuation">)</span><span className="token punctuation">;</span>
-        </code></pre>
+        </code></span>
                 </Card.Text>
                 <CopyToClipboard text="fetch('https://api-remaf.onrender.com/api/estaciones')
                 .then((response) => response.json())
@@ -84,7 +84,7 @@ function DocApi() {
 
       </div>
     </section>
-    
+    </>
   );
 }
 

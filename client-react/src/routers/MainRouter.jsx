@@ -34,6 +34,12 @@ export const MainRouter = () => {
                         <Home/>
                     </PublicRoutes>
                 } />
+                <Route path='/docs' element={
+                    <PrivateRoutes>
+                        <Docs/>
+                    </PrivateRoutes>
+                } />
+                
 
                 <Route path='/' element={
                     <PrivateRoutes>

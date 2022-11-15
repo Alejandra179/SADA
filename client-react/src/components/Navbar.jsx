@@ -5,7 +5,7 @@ import {
  } from 'react-router-dom'
  import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
-
+import '../assets/js/main.js'
 import '../assets/css/style.css'
 const NavBar = () => {
     const { user, isAuthenticated } = useAuth0();
@@ -32,9 +32,6 @@ const NavBar = () => {
                 <ul>
                     <li><NavLink to="/docs" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Docs</span></NavLink></li>
                     <li><NavLink to="/" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></NavLink></li>
-                    <li><NavLink  to="/"  className="nav-link scrollto"><i className="bi bi-broadcast-pin"></i><span>Sensores</span></NavLink></li>
-                    <li><NavLink to="/" className="nav-link scrollto"><i className="bi bi-thermometer-sun"></i><span>Ultima medición</span></NavLink></li>
-                    <li><NavLink to="/"  className="nav-link scrollto"><i className ="bi bi-file-person"></i><span>Usuarios</span></NavLink></li>
                     <li>  {isAuthenticated ? <LogoutButton /> : <LoginButton />}</li>
                 
                 </ul>
