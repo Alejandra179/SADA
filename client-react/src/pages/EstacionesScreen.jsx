@@ -4,7 +4,7 @@ import  TableEstaciones  from '../components/TableEstaciones'
 import '../assets/js/main.js'
 import '../assets/css/style.css'
 import CardsSensores from '../components/CardsSensores'
-import Card  from '../components/Card'
+import TableMediciones  from '../components/TableMediciones'
 export const EstacionesScreen = () =>{
    
   return (
@@ -13,7 +13,7 @@ export const EstacionesScreen = () =>{
     <main id="main">
        <TableEstaciones />
        <CardsSensores />
-       <Card />
+       <TableMediciones />
     </main>
 
     

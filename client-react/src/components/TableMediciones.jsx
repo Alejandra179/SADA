@@ -5,7 +5,7 @@ import api from '../services/api'
 import Table from 'react-bootstrap/Table';
 
 
-export default function Card() {
+export default function TableMediciones() {
   const [datos,setDatos] = useState([])
 
   const getData = async () => {
