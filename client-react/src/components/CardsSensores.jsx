@@ -69,6 +69,7 @@ export default function CardsSensores() {
         </div>
 
       </div>
+
     </section>
     </>
 );
