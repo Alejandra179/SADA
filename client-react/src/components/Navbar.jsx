@@ -1,61 +1,65 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useState, useEffect } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import React from 'react'
+import { useAuth0 } from "@auth0/auth0-react";
+import {
+    NavLink,
+ } from 'react-router-dom'
+ import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
+import '../assets/js/main.js'
+import '../assets/css/style.css'
+const NavBar = () => {
+    const { user, isAuthenticated } = useAuth0();
 
-
-function BasicExample() {
-     
-    const [activeLink, setActiveLink] = useState('home');
-    const [scrolled, setScrolled] = useState(false);
-  
-    useEffect(() => {
-      const onScroll = () => {
-        if (window.scrollY > 50) {
-          setScrolled(true);
-        } else {
-          setScrolled(false);
-        }
-      }
-  
-      window.addEventListener("scroll", onScroll);
-  
-      return () => window.removeEventListener("scroll", onScroll);
-    }, [])
-  
-    const onUpdateActiveLink = (value) => {     
-      setActiveLink(value);
-    }
-  
-  return (
-    <Navbar bg="white" expand="lg">
-      <Container>
-        <Navbar.Brand href="">REMAF</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-           { /*
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+    return (
+          
+           <>
            
-          </Nav> */}
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
-}
+           <i  className ="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
-export default BasicExample;
+            <header id="header">
+            <div  className="d-flex flex-column" data-aos="fade-up">
+
+                <div  className="profile">
+             {   //<img  src = './logo.png' className="figure-img img-fluid rounded" />
+             }
+             {isAuthenticated ? <img  src={user.picture} alt={user.name}  /> : <></> }
+               <br />
+                <h1  className="text-light"><NavLink to="/">REMAF</NavLink></h1>
+                
+                </div>
+
+                <nav id="navbar"  className="nav-menu navbar">
+                <ul>
+                    <li><NavLink to="/docs" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Docs</span></NavLink></li>
+                    <li><NavLink to="/estaciones" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></NavLink></li>
+                    
+                </ul>
+                </nav>
+                <br />
+                <div className='row'>
+                <div className="align-items-center justify-content-center">
+                 {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+                </div>  
+                </div>
+                
+            </div>
+            </header>
+           
+            <footer id="footer">
+              
+                <div  className="container">
+                <div  className="copyright">
+                    &copy; Copyright <strong><span>REMAF</span></strong>
+                </div>
+                <div  className="credits">
+                    Designed by Alejandro Bernal
+                </div>
+                </div>
+            </footer>
+           </>
+)
+}
+export default NavBar;
+ 
+
+
