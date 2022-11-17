@@ -24,7 +24,10 @@ export default function CardsSensores(props) {
         
         <section id="facts" className="facts" data-aos="fade-up">
           <div className="container">
-    
+            <hr />  
+            <div className="section-title text-success text-center">
+              <h1> {mediciones[0].descri_estaciones} </h1>
+            </div>
             <div className="section-title">
               <h2>Última medición obtenida {(new Date(mediciones[0].date_estaciones).toLocaleDateString('es-ES', options)).toUpperCase()}</h2>
             </div>

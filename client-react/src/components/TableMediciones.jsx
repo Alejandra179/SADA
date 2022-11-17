@@ -9,29 +9,29 @@ import Button from 'react-bootstrap/Button';
 export default function TableMediciones(props) {
   const [datos,setDatos] = useState([])
   const url = "https://api-remaf.onrender.com"
-
-  
   let fecha = new Date()
   let day = fecha.getDate()
   let month = fecha.getMonth() + 1
   let year = fecha.getFullYear()
-
+  
   if(month < 10){
      fecha =`-0${month}-${day}`;
   }else{
     fecha =`${year}-${month}-${day}`;
   }
-  const [date, setDate] = useState(fecha);
-   
+  const [FDesde, setFDesde] = useState(fecha);
+  const [FHasta, setFHasta] = useState(fecha);
   
   const apiGetMediciones = async () => {
-    const resp = await axios.get(`${url}/api/${props.estacionActual}`)
+    const resp = await axios.get(`${url}/api/${props.estacionActual}/${FDesde}/${FHasta}`)
     setDatos(resp.data)
+    
   }
   useEffect(() => {
     apiGetMediciones();
-    setDate(fecha)
-  }, [])
+    setFDesde(FDesde)
+    setFHasta(FHasta)
+  },[props.estacionActual])
 
  
 
@@ -45,15 +45,24 @@ export default function TableMediciones(props) {
 
         <div className="row ">
            <div className="col-md-3 text-inline">
+            
             <Form.Group controlId="duedate">
-                <Form.Label>Fecha</Form.Label>
-                <Form.Control
+                <Form.Label >Fecha Desde</Form.Label>
+                <Form.Control 
                   type="date"
                   name="duedate"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  value={FDesde}
+                  onChange={(e) => setFDesde(e.target.value)}
                 />
-                <Button variant="success">Buscar</Button>
+                <Form.Label  >Fecha Hasta </Form.Label>
+                <Form.Control 
+                  type="date"
+                  name="duedate"
+                  value={FHasta}
+                  onChange={(e) => setFHasta(e.target.value)}
+                />
+                <br />  
+              <Button variant="success" onClick={()=>apiGetMediciones()}>Buscar</Button>
             </Form.Group>
            </div>
           
@@ -79,11 +88,11 @@ export default function TableMediciones(props) {
               {datos.map(dt => {
                 return (
                   <tr key={dt.id_sensores}>
-                    <td>{dt.temperatura}</td>
-                    <td>{dt.humedad}</td>
-                    <td>{dt.precipitacion}</td>
-                    <td>{dt.direcc_viento}</td>
-                    <td>{dt.veloc_viento}</td>
+                    <td>{dt.temperatura_sensores}</td>
+                    <td>{dt.humedad_sensores}</td>
+                    <td>{dt.precipitacion_sensores}</td>
+                    <td>{dt.direcc_viento_sensores}</td>
+                    <td>{dt.veloc_viento_sensores}</td>
                   </tr>
                 );
               })}
