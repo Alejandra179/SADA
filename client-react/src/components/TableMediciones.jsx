@@ -1,29 +1,72 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import api from '../services/api'
+import axios from 'axios'
 import Table from 'react-bootstrap/Table';
+import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
 
-
-export default function TableMediciones() {
+export default function TableMediciones(props) {
   const [datos,setDatos] = useState([])
+  const url = "https://api-remaf.onrender.com"
 
-  const getData = async () => {
-    await api()
-    .then((dt) => {
-      setDatos(dt)
-    })
-  }
   
+  let fecha = new Date()
+  let day = fecha.getDate()
+  let month = fecha.getMonth() + 1
+  let year = fecha.getFullYear()
+
+  if(month < 10){
+     fecha =`/0${month}/${day}`;
+  }else{
+    fecha =`${year}/${month}/${day}`;
+  }
+  const [date, setDate] = useState(fecha);
+   
+  
+  const  apiGetMediciones=async()=>{
+    const resp = await axios.get(`${url}/api/${props.estacionActual}`)
+     setDatos(resp.data)
+    }
+    useEffect( () => {
+      apiGetMediciones()
+    }, [])
+
   useEffect( () => {
     getData()
   }, [])
 
  return (
-  <div className='bg-suceess'>
-    
-   <Table striped bordered hover >
-      <thead>
+<section id="estaciones"  className="resume">
+      <div  className="container">
+
+        <div  className="section-title">
+          <h2>Mediciones</h2>
+        </div>
+
+        <div className="row ">
+           <div className="col-md-3 text-inline">
+            <Form.Group controlId="duedate">
+            <Form.Label>Fecha
+            </Form.Label>
+            <Form.Control
+              type="date"
+              name="duedate"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+            <Button variant="success">Buscar</Button>{' '}
+            </Form.Group>
+           </div>
+          
+        </div>
+        <br />
+        
+        <div className='table-responsive-md'>
+
+        
+   <Table table  responsive  striped bordered >
+      <thead className='bg-success text-white'>
         <tr>
           <th>Temperatura</th>
           <th>Humedad</th>
@@ -45,7 +88,11 @@ export default function TableMediciones() {
           );
         })}
       </tbody>
-    </Table>
-  </div>
+    </Table> 
+    </div>
+    </div>
+       
+    </section>
+  
 );
 }

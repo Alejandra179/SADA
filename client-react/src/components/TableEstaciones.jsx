@@ -1,21 +1,18 @@
 import React,{useState,useEffect} from 'react'
 import EditModal from './EditModal'
 import axios from 'axios'
-
+import { useAuth0 } from "@auth0/auth0-react";
 //import { AppContext,useAppContext } from '../context/appContext'
 
-
-
-
-
-function ShowTable() {
+function TableEstaciones(props) {
+  const { setEstacionActual } = props 
    // const {estaciones} = useAppContext(AppContext)
    const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [datos,setData] = useState([])
   const url = "https://api-remaf.onrender.com"
-
+  const { user, isAuthenticated } = useAuth0();
 
   const  apiGetEstaciones=async()=>{
    const resp = await axios.get(`${url}/api/estaciones/`)
@@ -41,7 +38,7 @@ function ShowTable() {
         <div  className="section-title">
           <h2>Estaciones</h2>
            </div>
-
+      
         <div  className="row">
           <div  className="col-lg-12" data-aos="fade-up">
           <div className="d-grid gap-4 d-md-block">
@@ -58,6 +55,7 @@ function ShowTable() {
     <thead className='bg-success text-white'>
         <tr>
             <th>Acciones</th>
+            <th></th>
             <th>Estaciones</th>
             <th>Dirección</th>
             <th>Latitud</th>
@@ -76,6 +74,7 @@ function ShowTable() {
                   <button onClick={handleShow} className="btn-danger"><i className='fa-regular fa-trash-can'></i></button>
                   </div>
               </td>
+              <td><button className='btn-success text-white' onClick={setEstacionActual(dt.id_estaciones)}>Ver mediciones</button></td>
               <td>{dt.descri_estaciones}</td>
               <td>{dt.direccion_estaciones}</td>
               <td>{dt.latitude}</td>
@@ -102,4 +101,4 @@ function ShowTable() {
   )
 }
 
-export default ShowTable
+export default TableEstaciones
