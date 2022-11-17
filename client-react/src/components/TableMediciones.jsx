@@ -24,17 +24,16 @@ export default function TableMediciones(props) {
   const [date, setDate] = useState(fecha);
    
   
-  const  apiGetMediciones=async()=>{
+  const apiGetMediciones = async () => {
     const resp = await axios.get(`${url}/api/${props.estacionActual}`)
-     setDatos(resp.data)
-    }
-    useEffect( () => {
-      apiGetMediciones()
-    }, [])
-
-  useEffect( () => {
-    getData()
+    setDatos(resp.data)
+  }
+  useEffect(() => {
+    apiGetMediciones();
+    setDate(fecha)
   }, [])
+
+ 
 
  return (
 <section id="estaciones"  className="resume">
@@ -47,15 +46,14 @@ export default function TableMediciones(props) {
         <div className="row ">
            <div className="col-md-3 text-inline">
             <Form.Group controlId="duedate">
-            <Form.Label>Fecha
-            </Form.Label>
-            <Form.Control
-              type="date"
-              name="duedate"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
-            <Button variant="success">Buscar</Button>{' '}
+                <Form.Label>Fecha</Form.Label>
+                <Form.Control
+                  type="date"
+                  name="duedate"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+                <Button variant="success">Buscar</Button>
             </Form.Group>
            </div>
           
@@ -65,31 +63,31 @@ export default function TableMediciones(props) {
         <div className='table-responsive-md'>
 
         
-   <Table table  responsive  striped bordered >
-      <thead className='bg-success text-white'>
-        <tr>
-          <th>Temperatura</th>
-          <th>Humedad</th>
-          <th>Precipitacion</th>
-          <th>Dirección del viento</th>
-          <th>Velocidad del viento</th>
-        </tr>
-      </thead>
-      <tbody>
-        {datos.map(dt => {
-          return (
-            <tr key={dt.id}>
-              <td>{dt.temperatura}</td>
-              <td>{dt.humedad}</td>
-              <td>{dt.precipitacion}</td>
-              <td>{dt.direcc_viento}</td>
-              <td>{dt.veloc_viento}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </Table> 
-    </div>
+        <Table>
+            <thead className='bg-success text-white'>
+              <tr>
+                <th>Temperatura</th>
+                <th>Humedad</th>
+                <th>Precipitacion</th>
+                <th>Dirección del viento</th>
+                <th>Velocidad del viento</th>
+              </tr>
+            </thead>
+            <tbody>
+              {datos.map(dt => {
+                return (
+                  <tr key={dt.id}>
+                    <td>{dt.temperatura}</td>
+                    <td>{dt.humedad}</td>
+                    <td>{dt.precipitacion}</td>
+                    <td>{dt.direcc_viento}</td>
+                    <td>{dt.veloc_viento}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table> 
+      </div>
     </div>
        
     </section>
