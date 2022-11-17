@@ -14,7 +14,7 @@ export default function CardsSensores(props) {
   }
   useEffect( () => {
     apiGetMediciones()
-  }, [])
+  }, [props.estacionActual])
   
   if(mediciones.length>0){
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -80,7 +80,6 @@ export default function CardsSensores(props) {
               <div className="col-lg-4 col-md-3   align-items-md-center" data-aos="fade-up" data-aos-delay="300">
               <Card>
                 <div className="count-box  col-lg-12">
-                  
                   <Card.Title>Velocidad del Viento</Card.Title>
                   <i className="bi bi-speedometer2"></i>
                   <h1>{mediciones[0].veloc_viento_sensores} Km/h</h1>
