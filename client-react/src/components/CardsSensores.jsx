@@ -89,9 +89,13 @@ export default function CardsSensores(props) {
               </div>
     
             </div>
-    
+            <div className="col-lg-4 col-md-3   align-items-md-center" data-aos="fade-up" data-aos-delay="300">
+              <Card>
+                 <iframe src={urlmap} frameborder="0" s={{border:'0', width: '100%', height: '290px',}} allowfullscreen></iframe>
+                </Card>
+              </div>
           </div>
-          <iframe src={urlmap} frameborder="0" s={{border:'0', width: '100%', height: '290px',}} allowfullscreen></iframe>
+         
         </section>
         </>
     );
