@@ -63,7 +63,9 @@ export default function TableMediciones(props) {
         <div className='table-responsive-md'>
 
         
-        <Table>
+        
+        
+        <table className="table table-responsive table-striped mt-5 bordered">
             <thead className='bg-success text-white'>
               <tr>
                 <th>Temperatura</th>
@@ -76,7 +78,7 @@ export default function TableMediciones(props) {
             <tbody>
               {datos.map(dt => {
                 return (
-                  <tr key={dt.id}>
+                  <tr key={dt.id_sensores}>
                     <td>{dt.temperatura}</td>
                     <td>{dt.humedad}</td>
                     <td>{dt.precipitacion}</td>
@@ -86,7 +88,7 @@ export default function TableMediciones(props) {
                 );
               })}
             </tbody>
-          </Table> 
+          </table> 
       </div>
     </div>
        
