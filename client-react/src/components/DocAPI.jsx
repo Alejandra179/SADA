@@ -35,14 +35,14 @@ function DocApi() {
     <>
     <section id="estaciones"  className="resume">
       <div  className="container">
-
+       
         <div  className="section-title">
-          <h2>Docs</h2>
+          <h2>Documentación</h2>
            </div>
         <div  className="row">
           <div  className="col-lg-12" data-aos="fade-up">
           <Card>
-              <Card.Header className="h5">Consultar datos almacenados</Card.Header>
+              <Card.Header className="h5 bg-success text-white">Consultar datos almacenados</Card.Header>
               <Card.Body>
                 <Card.Title>Ejemplo de imprementación</Card.Title>
                 <Form.Control id='textCopied' className='hideen' disabled hidden />
@@ -62,7 +62,7 @@ function DocApi() {
             <br />
 
             <Card>
-              <Card.Header className="h5">Consultar Estaciones</Card.Header>
+              <Card.Header className="h5  bg-success text-white">Consultar Estaciones</Card.Header>
               <Card.Body>
                 <Card.Title>Ejemplo de imprementación</Card.Title>
                 <Form.Control id='textCopied' className='hideen' disabled hidden />
@@ -83,17 +83,17 @@ function DocApi() {
             </Card>
             < br/>
             <Card>
-              <Card.Header className="h5">Consultar Mediciones por Fecha</Card.Header>
+              <Card.Header  className="h5  bg-success text-white">Consultar Mediciones por Fecha</Card.Header>
               <Card.Body>
                 <Card.Title>Ejemplo de imprementación</Card.Title>
                 <Form.Control id='textCopied' className='hideen' disabled hidden />
                 <Card.Text>
-                <span className="brush: js notranslate"><code><span className="token function">fetch</span><span className="token punctuation">(</span><span className="token string">'https://api-remaf.onrender.com/api/${id}/${fechaDesde}/${fechaHasta}'</span><span className="token punctuation">)</span><br/>
+                <span className="brush: js notranslate"><code><span className="token function">fetch</span><span className="token punctuation">(</span><span className="token string">'https://api-remaf.onrender.com/api/$id/$fechaDesde/$fechaHasta'</span><span className="token punctuation">)</span><br/>
           <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">response</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> response<span className="token punctuation">.</span><span className="token function">json</span><span className="token punctuation">(</span><span className="token punctuation">)</span><span className="token punctuation">)</span><br/>
           <span className="token punctuation">.</span><span className="token function">then</span><span className="token punctuation">(</span><span className="token punctuation">(</span><span className="token parameter">data</span><span className="token punctuation">)</span> <span className="token operator">=&gt;</span> console<span className="token punctuation">.</span><span className="token function">log</span><span className="token punctuation">(</span>data<span className="token punctuation">)</span><span className="token punctuation">)</span><span className="token punctuation">;</span>
         </code></span>
                 </Card.Text>
-                <CopyToClipboard text="fetch('https://api-remaf.onrender.com/api/${id}/${fechaDesde}/${fechaHasta}')
+                <CopyToClipboard text="fetch('https://api-remaf.onrender.com/api/$id/$fechaDesde/$fechaHasta')
                 .then((response) => response.json())
                 .then((data) => console.log(data));">
                   {copied3 ? <Alert key='success' variant='success'><i className ="bi bi-clipboard-check"></i> ¡Copiado!</Alert> : <Button onClick={() =>showMsgCopy(3)} variant="success"><i className="bi bi-clipboard2"></i>Copiar</Button> }

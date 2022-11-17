@@ -4,6 +4,7 @@ import {
     NavLink,
  } from 'react-router-dom'
  import LoginButton from "./LoginButton";
+import logoRemaf from '../assets/img/logo2.png'
 import LogoutButton from "./LogoutButton";
 import '../assets/js/main.js'
 import '../assets/css/style.css'
@@ -22,7 +23,7 @@ const NavBar = () => {
                 <div  className="profile">
              {   //<img  src = './logo.png' className="figure-img img-fluid rounded" />
              }
-             {isAuthenticated ? <img  src={user.picture} alt={user.name}  /> : <></> }
+             
                <br />
                 <h1  className="text-light"><NavLink to="/">REMAF</NavLink></h1>
                 
@@ -32,7 +33,7 @@ const NavBar = () => {
                 <ul>
                     <li><NavLink to="/docs" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Docs</span></NavLink></li>
                     <li><NavLink to="/estaciones" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></NavLink></li>
-                    
+                    {isAuthenticated ? <li>¡ Bienvenido{user.name}  !</li>   : <></> }
                 </ul>
                 </nav>
                 <br />

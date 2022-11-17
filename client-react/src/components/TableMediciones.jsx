@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 
 export default function TableMediciones(props) {
   const [datos,setDatos] = useState([])
+  const [descriEstacion,setDescriEstacion] = useState('')
   const url = "https://api-remaf.onrender.com"
   let fecha = new Date()
   let day = fecha.getDate()
@@ -25,14 +26,18 @@ export default function TableMediciones(props) {
   const apiGetMediciones = async () => {
     const resp = await axios.get(`${url}/api/${props.estacionActual}/${FDesde}/${FHasta}`)
     setDatos(resp.data)
-    
+    setDescriEstacion(resp.data[0].descri_estaciones);
   }
   useEffect(() => {
     apiGetMediciones();
     setFDesde(FDesde)
     setFHasta(FHasta)
   },[props.estacionActual])
-
+  
+  const formatearFecha=(f) => {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return (new Date(f).toLocaleDateString('es-ES', options)).toUpperCase();
+  }
  
 
  return (
@@ -40,7 +45,7 @@ export default function TableMediciones(props) {
       <div  className="container">
 
         <div  className="section-title">
-          <h2>Mediciones</h2>
+          <h2>Mediciones de {descriEstacion} </h2>
         </div>
 
         <div className="row ">
@@ -82,6 +87,7 @@ export default function TableMediciones(props) {
                 <th>Precipitacion</th>
                 <th>Dirección del viento</th>
                 <th>Velocidad del viento</th>
+                <th>Fecha</th>
               </tr>
             </thead>
             <tbody>
@@ -93,6 +99,7 @@ export default function TableMediciones(props) {
                     <td>{dt.precipitacion_sensores}</td>
                     <td>{dt.direcc_viento_sensores}</td>
                     <td>{dt.veloc_viento_sensores}</td>
+                    <td>{formatearFecha(dt.date_estaciones)}</td>
                   </tr>
                 );
               })}
