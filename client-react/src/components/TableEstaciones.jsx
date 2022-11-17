@@ -5,8 +5,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 //import { AppContext,useAppContext } from '../context/appContext'
 
 function TableEstaciones(props) {
-  const { setEstacionActual } = props 
-   // const {estaciones} = useAppContext(AppContext)
    const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -17,15 +15,7 @@ function TableEstaciones(props) {
   const  apiGetEstaciones=async()=>{
    const resp = await axios.get(`${url}/api/estaciones/`)
    setData(resp.data)
-    // .then(response=>{
-    //    setData(response.json());
-    // })
-    // .catch(error=>{
-    //   console.log(error);
-    // })
   }
-
-  
   useEffect( () => {
     apiGetEstaciones()
   }, [])
@@ -63,6 +53,7 @@ function TableEstaciones(props) {
             
         </tr>
     </thead>
+    
     <tbody>
 
       {datos.map(dt => {
@@ -74,7 +65,7 @@ function TableEstaciones(props) {
                   <button onClick={handleShow} className="btn-danger"><i className='fa-regular fa-trash-can'></i></button>
                   </div>
               </td>
-              <td><button className='btn-success text-white' onClick={setEstacionActual(dt.id_estaciones)}>Ver mediciones</button></td>
+              <td><button className='btn-success text-white' onClick={()=>props.setEstacionActual(dt.id_estaciones)}>Ver mediciones</button></td>
               <td>{dt.descri_estaciones}</td>
               <td>{dt.direccion_estaciones}</td>
               <td>{dt.latitude}</td>

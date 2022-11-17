@@ -17,9 +17,9 @@ export default function TableMediciones(props) {
   let year = fecha.getFullYear()
 
   if(month < 10){
-     fecha =`/0${month}/${day}`;
+     fecha =`-0${month}-${day}`;
   }else{
-    fecha =`${year}/${month}/${day}`;
+    fecha =`${year}-${month}-${day}`;
   }
   const [date, setDate] = useState(fecha);
    
