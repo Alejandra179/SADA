@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 function DocApi() {
   const [copied1, setCopied1 ] = useState(false);
   const [copied2, setCopied2 ] = useState(false);
@@ -34,10 +34,9 @@ function DocApi() {
   return (
     <>
     <section id="estaciones"  className="resume">
-      <div  className="container">
-       
+      <div  className="container">    
         <div  className="section-title">
-          <h2>Documentación</h2>
+          <h2>Documentación</h2>   
            </div>
         <div  className="row">
           <div  className="col-lg-12" data-aos="fade-up">

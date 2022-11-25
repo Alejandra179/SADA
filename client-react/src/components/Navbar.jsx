@@ -3,11 +3,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {
     NavLink,
  } from 'react-router-dom'
- import LoginButton from "./LoginButton";
+ import LoginModal from "./LoginModal";
 import logoRemaf from '../assets/img/logo2.png'
 import LogoutButton from "./LogoutButton";
 import '../assets/js/main.js'
 import '../assets/css/style.css'
+import Image from 'react-bootstrap/Image'
 const NavBar = () => {
     const { user, isAuthenticated } = useAuth0();
 
@@ -21,8 +22,8 @@ const NavBar = () => {
             <div  className="d-flex flex-column" data-aos="fade-up">
 
                 <div  className="profile">
-             {   //<img  src = './logo.png' className="figure-img img-fluid rounded" />
-             }
+                 <Image  src = {logoRemaf}   />
+              
              
                <br />
                 <h1  className="text-light"><NavLink to="/">REMAF</NavLink></h1>
@@ -37,9 +38,9 @@ const NavBar = () => {
                 </ul>
                 </nav>
                 <br />
-                <div className='row'>
-                <div className="align-items-center justify-content-center">
-                 {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+                <div className='row d-flex '>
+                <div className=" d-flex align-items-center justify-content-center">
+                 {isAuthenticated ? <LoginModal /> : <LoginModal />}
                 </div>  
                 </div>
                 
@@ -52,9 +53,7 @@ const NavBar = () => {
                 <div  className="copyright">
                     &copy; Copyright <strong><span>REMAF</span></strong>
                 </div>
-                <div  className="credits">
-                    Designed by Alejandro Bernal
-                </div>
+                   
                 </div>
             </footer>
            </>

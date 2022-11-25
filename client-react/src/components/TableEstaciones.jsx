@@ -49,7 +49,6 @@ function TableEstaciones(props) {
     <thead className='bg-success text-white'>
         <tr>
             <th>Acciones</th>
-            <th></th>
             <th>Estaciones</th>
             <th>Dirección</th>
             <th>Latitud</th>
