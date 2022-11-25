@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import EditModal from './EditModal'
 import axios from 'axios'
 import { useAuth0 } from "@auth0/auth0-react";  
+import MapEstacion from './MapEstacion';
 
 function TableEstaciones(props) {
    const [show, setShow] = useState(false);
@@ -10,6 +11,7 @@ function TableEstaciones(props) {
   const [datos,setData] = useState([])
   const url = "https://api-remaf.onrender.com"
   const { user, isAuthenticated } = useAuth0();
+  
 
   const  apiGetEstaciones=async()=>{
    const resp = await axios.get(`${url}/api/estaciones/`)
@@ -92,8 +94,10 @@ function TableEstaciones(props) {
         </div>
 
       </div>
+
+     
     </section>
-    
+    <MapEstacion />
     </>
   )
 }
