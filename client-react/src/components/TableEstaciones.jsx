@@ -97,7 +97,7 @@ function TableEstaciones(props) {
 
      
     </section>
-    <MapEstacion />
+ 
     </>
   )
 }
