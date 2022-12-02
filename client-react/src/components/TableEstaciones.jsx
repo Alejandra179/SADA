@@ -3,6 +3,7 @@ import EditModal from './EditModal'
 import axios from 'axios'
 import { useAuth0 } from "@auth0/auth0-react";  
 import MapEstacion from './MapEstacion';
+import { Spinner } from 'react-bootstrap';
 
 function TableEstaciones(props) {
    const [show, setShow] = useState(false);
@@ -10,11 +11,13 @@ function TableEstaciones(props) {
   const handleShow = () => setShow(true);
   const [datos,setData] = useState([])
   const url = "https://api-remaf.onrender.com"
-  const { user, isAuthenticated } = useAuth0();
-  
+  const { user, isAuthenticated } = useAuth0(); 
+  const [loading,setLoading] = useState(false)
 
   const  apiGetEstaciones=async()=>{
+    setLoading(true)
    const resp = await axios.get(`${url}/api/estaciones/`)
+   setLoading(false)
    setData(resp.data)
   }
   useEffect( () => {
@@ -61,19 +64,24 @@ function TableEstaciones(props) {
     
     <tbody>
 
-      {datos.map(dt => {
+      {
+      
+      loading ? <tr className='text-center'><td colSpan={6}><Spinner animation="border" variant="success"  size='xl'/></td></tr>   :
+      datos.map(dt => {
           return (
             <tr key={dt.id_estaciones}>
-              {
-          isAuthenticated ? 
-              <td><div className='btn-group'>
-                  <button onClick={handleShow} className="btn-warning"><i className='fa-regular fa-pen-to-square text-white'></i></button>
-                  <button onClick={handleShow} className="btn-danger"><i className='fa-regular fa-trash-can'></i></button>
-                  </div>
+             
+              <td><button className='btn-success text-white' onClick={()=>props.setEstacionActual(dt.id_estaciones)}>Ver mediciones</button>
+                  {
+              isAuthenticated ? 
+                  <div className='btn-group'>
+                      <button onClick={handleShow} className="btn-warning"><i className='fa-regular fa-pen-to-square text-white'></i></button>
+                      <button onClick={handleShow} className="btn-danger"><i className='fa-regular fa-trash-can'></i></button>
+                      </div>
+                  
+                  : <></>
+                }
               </td>
-              : <></>
-            }
-              <td><button className='btn-success text-white' onClick={()=>props.setEstacionActual(dt.id_estaciones)}>Ver mediciones</button></td>
               <td>{dt.descri_estaciones}</td>
               <td>{dt.direccion_estaciones}</td>
               <td>{dt.latitude}</td>

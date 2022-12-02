@@ -6,12 +6,13 @@ import {
  import LoginModal from "./LoginModal";
 import logoRemaf from '../assets/img/logo2.png'
 import LogoutButton from "./LogoutButton";
+import LoginButton from "./LoginButton";
 import '../assets/js/main.js'
 import '../assets/css/style.css'
 import Image from 'react-bootstrap/Image'
 const NavBar = () => {
     const { user, isAuthenticated } = useAuth0();
-
+    console.log(isAuthenticated)
     return (
           
            <>
@@ -34,13 +35,13 @@ const NavBar = () => {
                 <ul>
                     <li><NavLink to="/docs" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Docs</span></NavLink></li>
                     <li><NavLink to="/estaciones" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></NavLink></li>
-                    {isAuthenticated ? <li>¡ Bienvenido{user.name}  !</li>   : <></> }
+                    {isAuthenticated ? <li>¡ Bienvenido  {user.name}  !</li>   : <></> }
                 </ul>
                 </nav>
                 <br />
                 <div className='row d-flex '>
                 <div className=" d-flex align-items-center justify-content-center">
-                 {isAuthenticated ? <LoginModal /> : <LoginModal />}
+                 {isAuthenticated ? <LogoutButton /> : <LoginButton />}
                 </div>  
                 </div>
                 
