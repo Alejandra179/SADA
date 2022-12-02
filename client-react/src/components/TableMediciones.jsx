@@ -5,10 +5,12 @@ import axios from 'axios'
 import Table from 'react-bootstrap/Table';
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
+import { Spinner } from 'react-bootstrap';
 
 export default function TableMediciones(props) {
   const [datos,setDatos] = useState([])
   const [descriEstacion,setDescriEstacion] = useState('')
+  const [loading,setLoading] = useState(false)
   const url = "https://api-remaf.onrender.com"
   let fecha = new Date()
   let day = fecha.getDate()
@@ -26,7 +28,9 @@ export default function TableMediciones(props) {
   const [FHasta, setFHasta] = useState(fecha);
   
   const apiGetMediciones = async () => {
+    setLoading(true)
     const resp = await axios.get(`${url}/api/${props.estacionActual}/${FDesde}/${FHasta}`)
+    setLoading(false)
     setDatos(resp.data)
     setDescriEstacion(resp.data[0].descri_estaciones);
   }
@@ -93,7 +97,11 @@ export default function TableMediciones(props) {
               </tr>
             </thead>
             <tbody>
-              {datos.map(dt => {
+              {
+              loading ? <tr className='text-center'><td colSpan={6}><Spinner animation="border" variant="success"  size='xl'/></td></tr>   :
+              datos.length == 0 ?  <tr className='text-center'><td colSpan={6}>No se encontraron datos.</td></tr> :
+              
+              datos.map(dt => {
                 return (
                   <tr key={dt.id_sensores}>
                     <td>{dt.temperatura_sensores}</td>
@@ -104,12 +112,14 @@ export default function TableMediciones(props) {
                     <td>{formatearFecha(dt.date_estaciones)}</td>
                   </tr>
                 );
-              })}
+              })
+              
+              }
             </tbody>
           </table> 
       </div>
     </div>
-       
+       <br />
     </section>
   
 );

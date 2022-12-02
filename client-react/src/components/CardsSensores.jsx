@@ -1,16 +1,20 @@
 import React,{useState,useEffect} from 'react'
-import { Card } from 'react-bootstrap';
+import { Card,Spinner } from 'react-bootstrap';
 import '../assets/js/main.js'
 import axios from 'axios'
 import MapEstacion from './MapEstacion.jsx';
 
 export default function CardsSensores(props) {
   const [mediciones,setMediciones] = useState([])
+  const [loading,setLoading] = useState(false)
   const url = "https://api-remaf.onrender.com"
 
   const  apiGetMediciones=async()=>{
-  const resp = await axios.get(`${url}/api/${props.estacionActual}`)
+    setLoading(true)
+    const resp = await axios.get(`${url}/api/${props.estacionActual}`)
+    setLoading(false)
    setMediciones(resp.data)
+   
   }
   useEffect( () => {
     apiGetMediciones()
@@ -36,14 +40,17 @@ export default function CardsSensores(props) {
                  <h2>Ubicación</h2>
                   
                 </div>
-                <MapEstacion estacionActual={props.estacionActual}/>
+                  { loading ?   <Spinner animation="border" variant="success"  size='xl'/> :  <MapEstacion estacionActual={props.estacionActual}/> }  
                 </div>
+                { loading ? <Spinner animation="border" variant="success"  size='xl'/> :  
                 <div className="col-md-4">
                  <ul className="list-group list-group-flush"  data-aos="fade-up">
                   
                    <div className="section-title">
                     <h2>Última medición obtenida {(new Date(mediciones[0].date_estaciones).toLocaleDateString('es-ES', options)).toUpperCase()}</h2>
                    </div>
+
+                   
                     <li className="list-group-item"><strong>Temperatura</strong>
                   <h2 className='text-success'><i className="bi bi-thermometer-half"></i> {mediciones[0].temperatura_sensores}°</h2></li>
                     <li className="list-group-item"><strong>Humedad</strong> 
@@ -56,6 +63,7 @@ export default function CardsSensores(props) {
                   <h2 className='text-success'><i className="bi bi-speedometer2"></i> {mediciones[0].veloc_viento_sensores} Km/h</h2></li>
                   </ul>
                 </div>
+                }
               </div>
              </div>
             

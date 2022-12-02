@@ -16,7 +16,8 @@ function LoginModal() {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        
+        <Modal.Header closeButton className='bg-success text-white text-center'>
           <Modal.Title>Iniciar Sesión</Modal.Title>
         </Modal.Header>
         <Modal.Body>
