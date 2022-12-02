@@ -28,6 +28,7 @@ function TableEstaciones(props) {
     <>
     <section id="estaciones"  className="resume">
       <div  className="container">
+    
 
         <div  className="section-title">
           <h2>Estaciones</h2>
