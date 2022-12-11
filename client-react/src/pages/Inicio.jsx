@@ -10,16 +10,7 @@ import Prueba from '../components/Prueba'
 export const Inicio = () =>{ 
   return (
     <>
-         <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "external",
-          route: "https://www.creative-tim.com/product/material-kit-react",
-          label: "free download",
-          color: "info",
-        }}
-        sticky
-      />
+         
     <main id="main"> 
     <section id="estaciones"  className="resume">
       <div  className="container">    
