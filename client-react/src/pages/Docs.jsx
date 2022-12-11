@@ -9,7 +9,7 @@ export const Docs = () =>{
     <>
     <Navbar />
     <main id="main">
-   
+      
     <DocApi />
     </main>
 
