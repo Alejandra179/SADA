@@ -28,7 +28,7 @@ export default function ColumnGroupingTable() {
      
     const resp = await axios.get(`${url}/api/1/2022-10-01/2022-12-01`)
     setDatos(resp.data)
-    setDescriEstacion(resp.data[0].descri_estaciones);
+  
   }
   useEffect(() => {
     apiGetMediciones();
