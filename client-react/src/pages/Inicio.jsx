@@ -4,8 +4,9 @@ import '../assets/css/style.css'
 import MapEstaciones from '../components/MapEstaciones' 
 import { useTheme } from '@mui/material/styles';
 import Prueba from '../components/Prueba' 
-import Chart2 from '../components/Chart2' 
 import { Line } from "react-chartjs-2";
+
+import Image from 'react-bootstrap/Image'
 import {
   NavLink,
 } from 'react-router-dom'
@@ -20,7 +21,8 @@ import {
   Legend,
 } from 'chart.js'
 import { Chart } from 'react-chartjs-2'
-
+import iconImage from '../assets/img/logo_circle.png';
+import iconLetras from '../assets/img/logo_letras.png';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -34,6 +36,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
@@ -92,13 +95,15 @@ export const Inicio = () =>{
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` ,
         backgroundColor:  theme.palette.success.light}}
       >
+      
       <Toolbar sx={{ flexWrap: 'wrap' }}>
-          <Typography variant="h5" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            REMAF 
-          </Typography>
-          <Typography variant="overline" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-          Red de Estaciones Metereologicas Automáticas Formoseñas
-          </Typography>
+          <Avatar
+            alt="Remy Sharp"
+            src={iconImage}
+            sx={{ width: 100, height: 100 }}
+          />  
+           <Image  src = {iconLetras}   />
+        
            
             <Button color="inherit">Login</Button>
             <Button color="inherit"><NavLink to="/estaciones" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></NavLink></Button>
@@ -146,7 +151,6 @@ export const Inicio = () =>{
      
 
         <Line data={data} />
-        <Chart2 />
        
           
     </Grid>
