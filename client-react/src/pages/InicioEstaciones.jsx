@@ -32,6 +32,9 @@ ChartJS.register(
   Tooltip,
   Legend
 ) 
+import  Navbar  from '../components/Navbar'
+
+import Paper from '@mui/material/Paper';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -50,6 +53,7 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import '@fontsource/roboto/400.css';
+import TableEstaciones from '../components/TableEstaciones.jsx';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -88,31 +92,8 @@ export const Inicio = () =>{
       <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
-      <AppBar
-        position="static"
-        color="info"
-        elevation={10}
-        sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` ,
-        backgroundColor:  theme.palette.success.light}}
-      >
-      
-      <Toolbar sx={{ flexWrap: 'wrap' }}>
-          <Avatar
-            alt="Remy Sharp"
-            src={iconImage}
-            sx={{ width: 100, height: 100 }}
-          />  
-           <Image  src = {iconLetras} style={{ width: 400, height: 100 }}  className='img-fluid hover-shadow'  rounded />
-        
-           
-            <Button color="inherit">Login</Button>
-            <Button color="inherit"><NavLink to="/estaciones" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Estaciones</span></NavLink></Button>
-            <Button color="inherit">Login</Button>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>
-        </Toolbar>
-      </AppBar>    
+    
+      <Navbar />
 
       <Container maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }} >
         <Typography
@@ -123,15 +104,16 @@ export const Inicio = () =>{
           gutterBottom
           className=''
         >  
-          Pricing
+          Estaciones
         </Typography>
         <Typography variant="h5" align="center" color={theme.palette.text.primary} component="p">
    
-          Estaciones
+          Ubicaciones
           
         </Typography>
       </Container>
-      <Container maxWidth="lg" component="main">
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Grid container spacing={3}>
         <Grid container spacing={5} alignItems="flex-end">
           <Card elevation={3}>
    
@@ -142,21 +124,91 @@ export const Inicio = () =>{
                       justifyContent: 'center',
                       alignItems: 'baseline',
                       mb: 2,
+
                     }}
                   >
                    <MapEstaciones />
                    </Box>                  
                 </CardContent>
+                
            </Card>
+           <Card elevation={3}>
+                <CardContent>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'baseline',
+                        mb: 2,
+
+                    }}
+                    >
+                    <TableEstaciones />
+                    </Box>                  
+                </CardContent>
+                
+                </Card>
+          
      
 
         <Line data={data} />
        
-          
+        </Grid>  
     </Grid>
     </Container>
 
-
+    <Box
+          component="main"
+          sx={{
+            backgroundColor: (theme) =>
+              theme.palette.mode === 'light'
+                ? theme.palette.grey[100]
+                : theme.palette.grey[900],
+            flexGrow: 1,
+            height: '100vh',
+            overflow: 'auto',
+          }}
+        >
+          <Toolbar />
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Grid container spacing={3}>
+              {/* Chart */}
+              <Grid item xs={12} md={8} lg={8}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    
+                  }}
+                >
+                  <MapEstaciones />
+                </Paper>
+              </Grid>
+              {/* Recent Deposits */}
+              <Grid item xs={12} md={4} lg={4}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    
+                  }}
+                >
+                  <TableEstaciones />
+                </Paper>
+              </Grid>
+              {/* Recent Orders */}
+              <Grid item xs={12}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                  <TableEstaciones />
+                </Paper>
+              </Grid>
+            </Grid>
+            <Copyright sx={{ pt: 4 }} />
+          </Container>
+        </Box>
+      
 
     <Container
         maxWidth="md"

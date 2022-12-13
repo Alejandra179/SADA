@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'; 
 import { NotFound404 } from '../pages/NotFound404'; 
 import { Docs } from '../pages/Docs';
-import { Inicio } from '../pages/Inicio';
+import { Inicio } from '../pages/InicioEstaciones';
 import { EstacionesScreen } from '../pages/EstacionesScreen'; 
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
