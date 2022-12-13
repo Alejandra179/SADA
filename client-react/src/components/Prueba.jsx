@@ -1,123 +1,223 @@
 import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow'; 
-import { useEffect,useState } from 'react';
-import axios from 'axios'
- 
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import CssBaseline from '@mui/material/CssBaseline';
+import Grid from '@mui/material/Grid';
+import StarIcon from '@mui/icons-material/StarBorder';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import GlobalStyles from '@mui/material/GlobalStyles';
+import Container from '@mui/material/Container';
 
-export default function ColumnGroupingTable() {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [datos,setDatos] = useState([])
-  const url = "https://api-remaf.onrender.com"
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-  const apiGetMediciones = async () => {
-     
-    const resp = await axios.get(`${url}/api/1/2022-10-01/2022-12-01`)
-    setDatos(resp.data)
-  
-  }
-  useEffect(() => {
-    apiGetMediciones();
-  },[1])
-
-  const formatearFecha=(f) => {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return (new Date(f).toLocaleDateString('es-ES', options)).toUpperCase();
-  }
- 
-
-  const columns = [
-    { id: 'descri_estaciones', label: 'Estación', minWidth: 100 },
-    { id: 'temperatura_sensores', label: 'Dirección', minWidth: 30 },
-    { id: 'humedad_sensores', label: 'Humedad', minWidth: 30 },
-    { id: 'precipitacion_sensores', label: 'Precipitación', minWidth: 30 },
-    { id: 'direcc_viento_sensores', label: 'Dirección Viento', minWidth: 30 },
-    { id: 'veloc_viento_sensores', label: 'Velocidad del Viento', minWidth: 30 },
-    { id: 'date_estaciones', label: 'Fecha', minWidth: 60 },
-  ];
-  /*
-  datos.map(dt => {
-    return (
-      <tr key={dt.}>
-        <td>{dt.temperatura_sensores}</td>
-        <td>{dt.humedad_sensores}</td>
-        <td>{dt.precipitacion_sensores}</td>
-        <td>{dt.direcc_viento_sensores}</td>
-        <td>{dt.veloc_viento_sensores}</td>
-        <td>{formatearFecha(dt.date_estaciones)}</td>
-      </tr>
-    );
-  })
-  */
-  
+function Copyright(props) {
   return (
-    <Paper sx={{ width: '100%' }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-               
-              <TableCell align="center" colSpan={7}>
-                Mediciones
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ top: 57, minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {datos
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.id  == 'date_estaciones'
-                            ?  formatearFecha(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={datos.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
   );
+}
+
+const tiers = [
+  {
+    title: 'Free',
+    price: '0',
+    description: [
+      '10 users included',
+      '2 GB of storage',
+      'Help center access',
+      'Email support',
+    ],
+    buttonText: 'Sign up for free',
+    buttonVariant: 'outlined',
+  },
+  {
+    title: 'Pro',
+    subheader: 'Most popular',
+    price: '15',
+    description: [
+      '20 users included',
+      '10 GB of storage',
+      'Help center access',
+      'Priority email support',
+    ],
+    buttonText: 'Get started',
+    buttonVariant: 'contained',
+  },
+  {
+    title: 'Enterprise',
+    price: '30',
+    description: [
+      '50 users included',
+      '30 GB of storage',
+      'Help center access',
+      'Phone & email support',
+    ],
+    buttonText: 'Contact us',
+    buttonVariant: 'outlined',
+  },
+];
+const footers = [
+  {
+    title: 'Company',
+    description: ['Team', 'History', 'Contact us', 'Locations'],
+  },
+  {
+    title: 'Features',
+    description: [
+      'Cool stuff',
+      'Random feature',
+      'Team feature',
+      'Developer stuff',
+      'Another one',
+    ],
+  },
+  {
+    title: 'Resources',
+    description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
+  },
+  {
+    title: 'Legal',
+    description: ['Privacy policy', 'Terms of use'],
+  },
+];
+
+function PricingContent() {
+  return (
+    <React.Fragment>
+    
+      {/* Hero unit */}
+      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+        <Typography
+          component="h1"
+          variant="h2"
+          align="center"
+          color="text.primary"
+          gutterBottom
+        >
+          Pricing
+        </Typography>
+        <Typography variant="h5" align="center" color="text.secondary" component="p">
+          Quickly build an effective pricing table for your potential customers with
+          this layout. It&apos;s built with default MUI components with little
+          customization.
+        </Typography>
+      </Container>
+      {/* End hero unit */}
+      <Container maxWidth="md" component="main">
+        <Grid container spacing={5} alignItems="flex-end">
+          {tiers.map((tier) => (
+            // Enterprise card is full width at sm breakpoint
+            <Grid
+              item
+              key={tier.title}
+              xs={12}
+              sm={tier.title === 'Enterprise' ? 12 : 6}
+              md={4}
+            >
+              <Card>
+                <CardHeader
+                  title={tier.title}
+                  subheader={tier.subheader}
+                  titleTypographyProps={{ align: 'center' }}
+                  action={tier.title === 'Pro' ? <StarIcon /> : null}
+                  subheaderTypographyProps={{
+                    align: 'center',
+                  }}
+                  sx={{
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === 'light'
+                        ? theme.palette.grey[200]
+                        : theme.palette.grey[700],
+                  }}
+                />
+                <CardContent>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'baseline',
+                      mb: 2,
+                    }}
+                  >
+                    <Typography component="h2" variant="h3" color="text.primary">
+                      ${tier.price}
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary">
+                      /mo
+                    </Typography>
+                  </Box>
+                  <ul>
+                    {tier.description.map((line) => (
+                      <Typography
+                        component="li"
+                        variant="subtitle1"
+                        align="center"
+                        key={line}
+                      >
+                        {line}
+                      </Typography>
+                    ))}
+                  </ul>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    fullWidth
+                    variant={ 'contained'}
+                  >
+                    {tier.buttonText}
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+      {/* Footer */}
+      <Container
+        maxWidth="md"
+        component="footer"
+        sx={{
+          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+          mt: 8,
+          py: [3, 6],
+        }}
+      >
+        <Grid container spacing={4} justifyContent="space-evenly">
+          {footers.map((footer) => (
+            <Grid item xs={6} sm={3} key={footer.title}>
+              <Typography variant="h6" color="text.primary" gutterBottom>
+                {footer.title}
+              </Typography>
+              <ul>
+                {footer.description.map((item) => (
+                  <li key={item}>
+                    <Link href="#" variant="subtitle1" color="text.secondary">
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Grid>
+          ))}
+        </Grid>
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+      {/* End footer */}
+    </React.Fragment>
+  );
+}
+
+export default function Pricing() {
+  return <PricingContent />;
 }

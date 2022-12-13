@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import imgMaps1 from '../assets/img/Estacion1.jpg'
 import imgMaps2 from '../assets/img/Estacion2.jpg' 
 import Image from 'react-bootstrap/Image'
+import marketImg from '../assets/img/marker-icon.png'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -10,6 +11,7 @@ import {
   NavLink,
 } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
+ 
 function MapEstaciones() { 
     const [datos,setData] = useState([])
     const url = "https://api-remaf.onrender.com" 
