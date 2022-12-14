@@ -72,7 +72,7 @@ function TableEstaciones(props) {
           return (
             <tr key={dt.id_estaciones}>
              
-              <td><button className='btn-success text-white' onClick={()=>props.setEstacionActual(dt.id_estaciones)}>Ver mediciones</button>
+              <td><button className='btn-success text-white' onClick={()=>props.setEstacionActual(dt.id_estaciones)}>Más Informarción</button>
                   {
               isAuthenticated ? 
                   <div className='btn-group'>

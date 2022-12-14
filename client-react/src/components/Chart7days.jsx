@@ -64,18 +64,18 @@ export default function ChartLine(props) {
     apiGetMediciones();
   },props.estacionActual)
   const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    labels: ["27/11", "28/11", "29/30", "30/11", "01/12", "02/12", "03/12"],
     datasets: [
       {
         label: "Temp. Min.",
-        data: [33, 53, 85, 41, 44, 65],
+        data: [20.84, 22.51,21.9, 23.15, 23.98, 28.8,21.9],
         fill: true,
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "rgba(75,192,192,1)"
       },
       {
         label: "Temp. Max.",
-        data: [33, 25, 35, 51, 54, 76],
+        data: [38.73, 37.81, 38.71, 37.93, 37.04, 36.3,35.4],
         fill: false,
         borderColor: "#742774"
       }
