@@ -33,7 +33,8 @@ const NavBar = () => {
 
                 <nav id="navbar"  className="nav-menu navbar">
                 <ul>
-                <li><NavLink to="/inicio" className="nav-link scrollto active"><i  className="bx bx-home"></i> <span>Inicio</span></NavLink></li>
+               
+            
                     <li><NavLink to="/docs" className="nav-link scrollto active"><i class="bi bi-file-earmark"></i><span>Docs</span></NavLink></li>
                     <li><NavLink to="/estaciones" className="nav-link scrollto active"><i class="bi bi-broadcast-pin"></i><span>Estaciones</span></NavLink></li>
                     {isAuthenticated ? <li>¡ Bienvenido  {user.name}  !</li>   : <></> }

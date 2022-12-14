@@ -7,6 +7,7 @@ import CardsSensores from '../components/CardsSensores'
 import ScriptMain from '../components/ScriptMain'
 import TableMediciones  from '../components/TableMediciones'
 import  Chart7days from '../components/Chart7days'
+import MapEstaciones from '../components/MapEstaciones'
 export const EstacionesScreen = () =>{
   const [estacionActual,  setEstacionActual] = useState(1);
   
@@ -14,10 +15,11 @@ export const EstacionesScreen = () =>{
     <>
     <Navbar />
     <main id="main">
+      
        <TableEstaciones  setEstacionActual={ setEstacionActual} />
   
        <CardsSensores estacionActual={estacionActual}/>
-       <Chart7days  estacionActual={estacionActual}/>
+
        <TableMediciones estacionActual={estacionActual}/>
        <ScriptMain />
     </main>

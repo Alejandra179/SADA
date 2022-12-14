@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import EditModal from './EditModal'
 import axios from 'axios'
 import { useAuth0 } from "@auth0/auth0-react";  
-import MapEstacion from './MapEstacion';
+import MapEstaciones from './MapEstaciones';
 import { Spinner } from 'react-bootstrap';
 
 function TableEstaciones(props) {
@@ -36,7 +36,7 @@ function TableEstaciones(props) {
       
         <div  className="row">
           <div  className="col-lg-12" data-aos="fade-up">
-             
+          <MapEstaciones />
          {
            isAuthenticated ? 
                     <div className="d-grid gap-4 d-md-block">

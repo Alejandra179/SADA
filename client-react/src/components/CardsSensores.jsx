@@ -3,7 +3,7 @@ import { Card,Spinner } from 'react-bootstrap';
 import '../assets/js/main.js'
 import axios from 'axios'
 import MapEstacion from './MapEstacion.jsx';
-
+import Chart7days from './Chart7days.jsx'
 export default function CardsSensores(props) {
   const [mediciones,setMediciones] = useState([])
   const [loading,setLoading] = useState(false)
@@ -65,7 +65,7 @@ export default function CardsSensores(props) {
                 }
               </div>
              </div>
-            
+             <Chart7days  estacionActual={props.estacionActual}/>
           </div>
 
          
