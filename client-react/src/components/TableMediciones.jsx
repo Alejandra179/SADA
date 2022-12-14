@@ -39,7 +39,7 @@ export default function TableMediciones(props) {
     const resp = await axios.get(`${url}/api/${props.estacionActual}/${FDesde}/${FHasta}`)
     setLoading(false)
     setDatos(resp.data)
-    setDescriEstacion(resp.data[0].descri_estaciones);
+    (resp.data).length >0 ? setDescriEstacion(resp.data[0].descri_estaciones) :setDescriEstacion("") ;
   }
   useEffect(() => {
     apiGetMediciones();

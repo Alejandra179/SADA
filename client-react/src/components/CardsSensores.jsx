@@ -22,8 +22,7 @@ export default function CardsSensores(props) {
   
   if(mediciones.length>0){
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const urlmap= "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d"+mediciones[0].latitude+"!2d"+mediciones[0].longitude+"!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621";
-      return (
+        return (
         <>
         
         <section id="facts" className="facts" data-aos="fade-up">
@@ -40,7 +39,7 @@ export default function CardsSensores(props) {
                  <h2>Ubicación</h2>
                   
                 </div>
-                  { loading ?   <Spinner animation="border" variant="success"  size='xl'/> :  <MapEstacion estacionActual={props.estacionActual}/> }  
+                  { loading ?   <Spinner animation="border" variant="success"  size='xl'/> :  <MapEstacion estacionActual={[mediciones[0].latitude,mediciones[0].longitude]}/> }  
                 </div>
                 { loading ? <Spinner animation="border" variant="success"  size='xl'/> :  
                 <div className="col-md-4">

@@ -35,13 +35,14 @@ function MapEstaciones() {
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
     {
+ 
         datos.map(dt => {
             return ( 
                 <Marker  key={dt.id_estaciones} position={[dt.latitude ,dt.longitude ]}>
                         <Popup>
                         {dt.descri_estaciones} <br /> {dt.direccion_estaciones}
-
-                        <NavLink to="/docs" className="nav-link "><i  className="bx bx-search"></i> <span>Más Información</span></NavLink> 
+                               
+                        <NavLink to={"/estacion/"+dt.id_estaciones} className="nav-link "><i  className="bx bx-search"></i> <span>Más Información</span></NavLink> 
                         </Popup>
                 </Marker> 
     

@@ -6,10 +6,18 @@ import '../assets/css/style.css'
 import CardsSensores from '../components/CardsSensores'
 import ScriptMain from '../components/ScriptMain'
 import TableMediciones  from '../components/TableMediciones'
-import  Chart7days from '../components/Chart7days'
-export const EstacionesScreen = () =>{
+import Chart7days from '../components/Chart7days'
+import {
+ useParams
+} from 'react-router-dom'; 
+
+export const EstacionScreen = () =>{
   const [estacionActual,  setEstacionActual] = useState(1);
-  
+  let {id} = useParams();
+  if (id != ""){
+    setEstacionActual(id)
+  }
+ 
   return (
     <>
     <Navbar />
@@ -17,7 +25,7 @@ export const EstacionesScreen = () =>{
        <TableEstaciones  setEstacionActual={ setEstacionActual} />
   
        <CardsSensores estacionActual={estacionActual}/>
-       <Chart7days  estacionActual={estacionActual}/>
+       
        <TableMediciones estacionActual={estacionActual}/>
        <ScriptMain />
     </main>

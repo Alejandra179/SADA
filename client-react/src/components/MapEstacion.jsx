@@ -6,12 +6,12 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import "leaflet/dist/leaflet.css"; 
 function MapEstacion(props) {
-    const position = [	-26.0814025635489, -58.27586964876695]
+    const position = props.estacionActual
   
     
   return (
     <>
-   <MapContainer center={position} zoom={300} scrollWheelZoom={false}>
+   <MapContainer center={position} zoom={7} scrollWheelZoom={false} autoFocus>
   <TileLayer
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
